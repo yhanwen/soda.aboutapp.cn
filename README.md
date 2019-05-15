@@ -1,2 +1,2 @@
 # soda
-Soda - A Easer Way To Use Graph Database
+Soda - A Easier Way To Use Graph Database
