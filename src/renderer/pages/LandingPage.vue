@@ -1,6 +1,7 @@
 <template>
 <div class="soda-frame-page">
   <div class="side-wrapper">
+    <resource-manager />
   </div>
   <div class="main-wrapper">
     <tab-view />
@@ -10,10 +11,12 @@
 
 <script>
 import TabView from '../components/TabView';
+import ResourceManager from '../components/ResourceManager';
 export default {
   name: 'landing-page',
   components: {
     TabView,
+    ResourceManager,
   },
   data() {
     return {};
@@ -36,6 +39,7 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+  font-family: PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,"\5FAE\8F6F\96C5\9ED1",STHeitiSC-Light,simsun,"\5B8B\4F53",WenQuanYi Zen Hei,WenQuanYi Micro Hei,"sans-serif";
 }
 
 .soda-frame-page {
@@ -49,7 +53,7 @@ body {
 
   .side-wrapper {
     flex: 0 0 260px;
-    border-right: lighten(@gray-dark, 10) solid 1px;
+    background: lighten(@gray-dark, 2);
   }
 
   .main-wrapper {

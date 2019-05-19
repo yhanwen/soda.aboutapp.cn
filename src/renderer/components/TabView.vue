@@ -19,18 +19,6 @@ export default {
         title: 'Tab 2',
         name: '2',
         content: 'Tab 2 content',
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content',
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content',
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content',
       }],
       tabIndex: 1,
     };
@@ -92,7 +80,7 @@ export default {
       background-color: lighten(@gray-dark, 10);
       border-bottom:0;
       .el-tabs__item {
-        padding-right: 25px !important;
+        padding-right: 27px !important;
         padding-left: 15px !important;
         border-right-color: lighten(@gray-dark, 7);
         border-left-color: lighten(@gray-dark, 7);
@@ -102,7 +90,7 @@ export default {
         position: absolute;
         right: 6px;
         top: 50%;
-        transform: translate(0, -50%);
+        transform: translate(0, -47%);
         color: fadeout(@white, 50);
         font-weight: 600;
         visibility: hidden;
