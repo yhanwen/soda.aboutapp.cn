@@ -1,18 +1,40 @@
 <template>
   <div class="soda-home">
-    <draw />
+    <vis ref="vis" />
   </div>
 </template>
 
 <script>
-  import Draw from 'visual-editor';
+  import { mapActions, mapState } from 'vuex';
+  import Vis from './Vis';
 
   export default {
     name: 'landing-page',
-    components: { Draw },
+    components: { Vis },
+    data() {
+      return {
+      };
+    },
+    async mounted() {
+      await this.getAllSchema();
+    },
+    computed: {
+      ...mapState('Neo4j', {
+        visData: state => state.allSchemas,
+      }),
+    },
     methods: {
-      open(link) {
-        this.$electron.shell.openExternal(link);
+      ...mapActions('Neo4j', ['getAllSchema']),
+    },
+    watch: {
+      visData: {
+        handler(newVal) {
+          if (this.$refs.vis) {
+            this.$refs.vis.setDataSet(newVal);
+          }
+        },
+        immediate: true,
+        deep: true,
       },
     },
   };
@@ -27,6 +49,6 @@
     left:0;
     right:0;
     bottom:0;
-    background: @gray-light;
+    background: @gray-dark;
   }
 </style>

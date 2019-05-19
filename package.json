@@ -57,6 +57,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "element-ui": "^2.8.2",
+    "neo4j-driver": "^1.7.4",
+    "vis": "^4.21.0",
     "visual-editor": "git+http://git@192.168.1.169/framework/visual-editor.git",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
@@ -87,6 +90,8 @@
     "electron-builder": "^20.19.2",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.4",
+    "element-theme": "^2.0.1",
+    "element-theme-chalk": "^2.8.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-friendly-formatter": "^4.0.1",
@@ -126,5 +131,12 @@
     "webpack-dev-server": "^3.1.4",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-merge": "^4.1.3"
+  },
+  "element-theme": {
+    "browsers": ["ie > 9", "last 2 versions"],
+    "out": "./theme/styles",
+    "config": "./theme/element-variables.scss",
+    "theme": "element-theme-chalk",
+    "minimize": false
   }
 }
