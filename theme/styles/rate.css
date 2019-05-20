@@ -247,7 +247,7 @@
     display: inline-block;
     font-size: 18px;
     margin-right: 6px;
-    color: #C0C4CC;
+    color: #666;
     -webkit-transition: .3s;
     transition: .3s; }
     .el-rate__icon.hover {

@@ -349,10 +349,10 @@
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  background: #FFFFFF;
-  border: 1px solid #DCDFE6;
-  border-color: #DCDFE6;
-  color: #606266;
+  background: #555;
+  border: 1px solid #222;
+  border-color: #555;
+  color: #fff;
   -webkit-appearance: none;
   text-align: center;
   -webkit-box-sizing: border-box;
@@ -367,18 +367,18 @@
   -ms-user-select: none;
   padding: 12px 20px;
   font-size: 14px;
-  border-radius: 4px; }
+  border-radius: 0px; }
   .el-button + .el-button {
     margin-left: 10px; }
   .el-button.is-round {
     padding: 12px 20px; }
   .el-button:hover, .el-button:focus {
-    color: #409EFF;
-    border-color: #c6e2ff;
-    background-color: #ecf5ff; }
+    color: #3374b4;
+    border-color: #c2d5e9;
+    background-color: #ebf1f8; }
   .el-button:active {
-    color: #3a8ee6;
-    border-color: #3a8ee6;
+    color: #2e68a2;
+    border-color: #2e68a2;
     outline: none; }
   .el-button::-moz-focus-inner {
     border: 0; }
@@ -386,18 +386,18 @@
     margin-left: 5px; }
   .el-button.is-plain:hover, .el-button.is-plain:focus {
     background: #FFFFFF;
-    border-color: #409EFF;
-    color: #409EFF; }
+    border-color: #3374b4;
+    color: #3374b4; }
   .el-button.is-plain:active {
     background: #FFFFFF;
-    border-color: #3a8ee6;
-    color: #3a8ee6;
+    border-color: #2e68a2;
+    color: #2e68a2;
     outline: none; }
   .el-button.is-active {
-    color: #3a8ee6;
-    border-color: #3a8ee6; }
+    color: #2e68a2;
+    border-color: #2e68a2; }
   .el-button.is-disabled, .el-button.is-disabled:hover, .el-button.is-disabled:focus {
-    color: #C0C4CC;
+    color: #666;
     cursor: not-allowed;
     background-image: none;
     background-color: #FFFFFF;
@@ -407,7 +407,7 @@
   .el-button.is-disabled.is-plain, .el-button.is-disabled.is-plain:hover, .el-button.is-disabled.is-plain:focus {
     background-color: #FFFFFF;
     border-color: #EBEEF5;
-    color: #C0C4CC; }
+    color: #666; }
   .el-button.is-loading {
     position: relative;
     pointer-events: none; }
@@ -429,42 +429,42 @@
     padding: 12px; }
   .el-button--primary {
     color: #FFFFFF;
-    background-color: #409EFF;
-    border-color: #409EFF; }
+    background-color: #3374b4;
+    border-color: #3374b4; }
     .el-button--primary:hover, .el-button--primary:focus {
-      background: #66b1ff;
-      border-color: #66b1ff;
+      background: #5c90c3;
+      border-color: #5c90c3;
       color: #FFFFFF; }
     .el-button--primary:active {
-      background: #3a8ee6;
-      border-color: #3a8ee6;
+      background: #2e68a2;
+      border-color: #2e68a2;
       color: #FFFFFF;
       outline: none; }
     .el-button--primary.is-active {
-      background: #3a8ee6;
-      border-color: #3a8ee6;
+      background: #2e68a2;
+      border-color: #2e68a2;
       color: #FFFFFF; }
     .el-button--primary.is-disabled, .el-button--primary.is-disabled:hover, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:active {
       color: #FFFFFF;
-      background-color: #a0cfff;
-      border-color: #a0cfff; }
+      background-color: #99bada;
+      border-color: #99bada; }
     .el-button--primary.is-plain {
-      color: #409EFF;
-      background: #ecf5ff;
-      border-color: #b3d8ff; }
+      color: #3374b4;
+      background: #ebf1f8;
+      border-color: #adc7e1; }
       .el-button--primary.is-plain:hover, .el-button--primary.is-plain:focus {
-        background: #409EFF;
-        border-color: #409EFF;
+        background: #3374b4;
+        border-color: #3374b4;
         color: #FFFFFF; }
       .el-button--primary.is-plain:active {
-        background: #3a8ee6;
-        border-color: #3a8ee6;
+        background: #2e68a2;
+        border-color: #2e68a2;
         color: #FFFFFF;
         outline: none; }
       .el-button--primary.is-plain.is-disabled, .el-button--primary.is-plain.is-disabled:hover, .el-button--primary.is-plain.is-disabled:focus, .el-button--primary.is-plain.is-disabled:active {
-        color: #8cc5ff;
-        background-color: #ecf5ff;
-        border-color: #d9ecff; }
+        color: #85acd2;
+        background-color: #ebf1f8;
+        border-color: #d6e3f0; }
   .el-button--success {
     color: #FFFFFF;
     background-color: #67C23A;
@@ -620,7 +620,7 @@
   .el-button--medium {
     padding: 10px 20px;
     font-size: 14px;
-    border-radius: 4px; }
+    border-radius: 0px; }
     .el-button--medium.is-round {
       padding: 10px 20px; }
     .el-button--medium.is-circle {
@@ -628,7 +628,7 @@
   .el-button--small {
     padding: 9px 15px;
     font-size: 12px;
-    border-radius: 3px; }
+    border-radius: -1px; }
     .el-button--small.is-round {
       padding: 9px 15px; }
     .el-button--small.is-circle {
@@ -636,23 +636,23 @@
   .el-button--mini {
     padding: 7px 15px;
     font-size: 12px;
-    border-radius: 3px; }
+    border-radius: -1px; }
     .el-button--mini.is-round {
       padding: 7px 15px; }
     .el-button--mini.is-circle {
       padding: 7px; }
   .el-button--text {
     border-color: transparent;
-    color: #409EFF;
+    color: #3374b4;
     background: transparent;
     padding-left: 0;
     padding-right: 0; }
     .el-button--text:hover, .el-button--text:focus {
-      color: #66b1ff;
+      color: #5c90c3;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text:active {
-      color: #3a8ee6;
+      color: #2e68a2;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text.is-disabled, .el-button--text.is-disabled:hover, .el-button--text.is-disabled:focus {
@@ -681,10 +681,10 @@
       border-top-left-radius: 0;
       border-bottom-left-radius: 0; }
     .el-button-group > .el-button:first-child:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px; }
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px; }
       .el-button-group > .el-button:first-child:last-child.is-round {
         border-radius: 20px; }
       .el-button-group > .el-button:first-child:last-child.is-circle {

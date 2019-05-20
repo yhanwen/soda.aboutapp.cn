@@ -236,7 +236,7 @@
   min-width: 380px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 0px;
   border-width: 1px;
   border-style: solid;
   border-color: #EBEEF5;
@@ -298,7 +298,7 @@
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     cursor: pointer;
-    color: #C0C4CC;
+    color: #666;
     font-size: 16px; }
     .el-message__closeBtn:focus {
       outline-width: 0; }

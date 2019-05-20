@@ -31,7 +31,9 @@ export default {
 <style lang="less">
 @import '../assets/styles/vars.less';
 @import '../assets/styles/mixins.less';
-
+* {
+  outline-width: 0;
+}
 html,
 body {
   width: 100%;
@@ -52,7 +54,7 @@ body {
   background: @gray-dark;
 
   .side-wrapper {
-    flex: 0 0 260px;
+    flex: 0 0 300px;
     background: lighten(@gray-dark, 2);
   }
 

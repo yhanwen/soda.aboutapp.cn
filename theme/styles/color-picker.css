@@ -257,8 +257,8 @@
     .el-color-predefine__color-selector:nth-child(10n + 1) {
       margin-left: 0; }
     .el-color-predefine__color-selector.selected {
-      -webkit-box-shadow: 0 0 3px 2px #409EFF;
-      box-shadow: 0 0 3px 2px #409EFF; }
+      -webkit-box-shadow: 0 0 3px 2px #3374b4;
+      box-shadow: 0 0 3px 2px #3374b4; }
     .el-color-predefine__color-selector > div {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -407,16 +407,16 @@
       color: #cccccc;
       cursor: not-allowed; }
     .el-color-dropdown__btn:hover {
-      color: #409EFF;
-      border-color: #409EFF; }
+      color: #3374b4;
+      border-color: #3374b4; }
   .el-color-dropdown__link-btn {
     cursor: pointer;
-    color: #409EFF;
+    color: #3374b4;
     text-decoration: none;
     padding: 15px;
     font-size: 12px; }
     .el-color-dropdown__link-btn:hover {
-      color: tint(#409EFF, 20%); }
+      color: tint(#3374b4, 20%); }
 
 .el-color-picker {
   display: inline-block;
@@ -485,7 +485,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: 1px solid #999;
-    border-radius: 2px;
+    border-radius: 0px;
     width: 100%;
     height: 100%;
     text-align: center; }
@@ -524,6 +524,6 @@
     box-sizing: content-box;
     background-color: #FFFFFF;
     border: 1px solid #EBEEF5;
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); }

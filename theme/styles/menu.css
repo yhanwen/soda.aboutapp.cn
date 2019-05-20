@@ -496,7 +496,7 @@
         .el-menu--horizontal > .el-submenu:focus .el-submenu__title, .el-menu--horizontal > .el-submenu:hover .el-submenu__title {
           color: #303133; }
       .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
-        border-bottom: 2px solid #409EFF;
+        border-bottom: 2px solid #3374b4;
         color: #303133; }
       .el-menu--horizontal > .el-submenu .el-submenu__title {
         height: 60px;
@@ -526,7 +526,7 @@
       outline: none;
       color: #303133; }
     .el-menu--horizontal > .el-menu-item.is-active {
-      border-bottom: 2px solid #409EFF;
+      border-bottom: 2px solid #3374b4;
       color: #303133; }
   .el-menu--collapse {
     width: 64px; }
@@ -559,7 +559,7 @@
         left: 100%;
         z-index: 10;
         border: 1px solid #E4E7ED;
-        border-radius: 2px;
+        border-radius: 0px;
         -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); }
       .el-menu--collapse .el-submenu.is-opened > .el-submenu__title .el-submenu__icon-arrow {
@@ -570,7 +570,7 @@
     min-width: 200px;
     border: none;
     padding: 5px 0;
-    border-radius: 2px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); }
     .el-menu--popup-bottom-start {
@@ -599,7 +599,7 @@
     color: #909399; }
   .el-menu-item:hover, .el-menu-item:focus {
     outline: none;
-    background-color: #ecf5ff; }
+    background-color: #ebf1f8; }
   .el-menu-item.is-disabled {
     opacity: 0.25;
     cursor: not-allowed;
@@ -611,7 +611,7 @@
     font-size: 18px;
     vertical-align: middle; }
   .el-menu-item.is-active {
-    color: #409EFF; }
+    color: #3374b4; }
     .el-menu-item.is-active i {
       color: inherit; }
 
@@ -639,13 +639,13 @@
       color: #909399; }
     .el-submenu__title:hover, .el-submenu__title:focus {
       outline: none;
-      background-color: #ecf5ff; }
+      background-color: #ebf1f8; }
     .el-submenu__title.is-disabled {
       opacity: 0.25;
       cursor: not-allowed;
       background: none !important; }
     .el-submenu__title:hover {
-      background-color: #ecf5ff; }
+      background-color: #ebf1f8; }
   .el-submenu .el-menu {
     border: none; }
   .el-submenu .el-menu-item {
@@ -664,7 +664,7 @@
     transition: transform .3s, -webkit-transform .3s;
     font-size: 12px; }
   .el-submenu.is-active .el-submenu__title {
-    border-bottom-color: #409EFF; }
+    border-bottom-color: #3374b4; }
   .el-submenu.is-opened > .el-submenu__title .el-submenu__icon-arrow {
     -webkit-transform: rotateZ(180deg);
     transform: rotateZ(180deg); }

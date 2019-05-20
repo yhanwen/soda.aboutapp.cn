@@ -12,6 +12,16 @@ export default {
     options: {
       default() {
         return {
+          physics: {
+            barnesHut: {
+              gravitationalConstant: -5000,
+              centralGravity: 0.3,
+              springLength: 300,
+              springConstant: 0.04,
+              damping: 0.09,
+              avoidOverlap: 0,
+            },
+          },
           nodes: {
             shape: 'dot',
             font: {

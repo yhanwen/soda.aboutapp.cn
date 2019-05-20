@@ -16,7 +16,7 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 /* Color
 -------------------------- */
 /// color|1|Brand Color|0
-$--color-primary: #409EFF !default;
+$--color-primary: rgb(51, 116, 180) !default;
 /// color|1|Background Color|4
 $--color-white: #FFFFFF !default;
 /// color|1|Background Color|4
@@ -55,9 +55,9 @@ $--color-text-regular: #606266 !default;
 /// color|1|Font Color|2
 $--color-text-secondary: #909399 !default;
 /// color|1|Font Color|2
-$--color-text-placeholder: #C0C4CC !default;
+$--color-text-placeholder: #666 !default;
 /// color|1|Border Color|3
-$--border-color-base: #DCDFE6 !default;
+$--border-color-base: #222 !default;
 /// color|1|Border Color|3
 $--border-color-light: #E4E7ED !default;
 /// color|1|Border Color|3
@@ -81,9 +81,9 @@ $--border-style-base: solid !default;
 $--border-color-hover: $--color-text-placeholder !default;
 $--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
 /// borderRadius|1|Radius|0
-$--border-radius-base: 4px !default;
+$--border-radius-base: 0px !default;
 /// borderRadius|1|Radius|0
-$--border-radius-small: 2px !default;
+$--border-radius-small: 0px !default;
 /// borderRadius|1|Radius|0
 $--border-radius-circle: 100% !default;
 /// borderRadius|1|Radius|0
@@ -423,18 +423,18 @@ $--notification-danger-icon-color: $--color-danger !default;
 -------------------------- */
 $--input-font-size: $--font-size-base !default;
 /// color||Color|0
-$--input-font-color: $--color-text-regular !default;
+$--input-font-color: #fff !default;
 /// height||Other|4
 $--input-width: 140px !default;
 /// height||Other|4
 $--input-height: 40px !default;
 $--input-border: $--border-base !default;
-$--input-border-color: $--border-color-base !default;
+$--input-border-color: #999 !default;
 /// borderRadius||Border|2
 $--input-border-radius: $--border-radius-base !default;
 $--input-border-color-hover: $--border-color-hover !default;
 /// color||Color|0
-$--input-background-color: $--color-white !default;
+$--input-background-color: #222 !default;
 $--input-fill-disabled: $--disabled-fill-base !default;
 $--input-color-disabled: $--font-color-disabled-base !default;
 /// color||Color|0
@@ -548,11 +548,11 @@ $--button-mini-padding-vertical: 7px !default;
 $--button-mini-padding-horizontal: 15px !default;
 
 /// color||Color|0
-$--button-default-font-color: $--color-text-regular !default;
+$--button-default-font-color: #fff !default;
 /// color||Color|0
-$--button-default-background-color: $--color-white !default;
+$--button-default-background-color: #555 !default;
 /// color||Color|0
-$--button-default-border-color: $--border-color-base !default;
+$--button-default-border-color: #555 !default;
 
 /// color||Color|0
 $--button-disabled-font-color: $--color-text-placeholder !default;

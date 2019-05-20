@@ -361,13 +361,13 @@
   -ms-user-select: none; }
   .el-radio.is-bordered {
     padding: 12px 20px 0 10px;
-    border-radius: 4px;
-    border: 1px solid #DCDFE6;
+    border-radius: 0px;
+    border: 1px solid #222;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 40px; }
     .el-radio.is-bordered.is-checked {
-      border-color: #409EFF; }
+      border-color: #3374b4; }
     .el-radio.is-bordered.is-disabled {
       cursor: not-allowed;
       border-color: #EBEEF5; }
@@ -375,7 +375,7 @@
       margin-left: 10px; }
   .el-radio--medium.is-bordered {
     padding: 10px 20px 0 10px;
-    border-radius: 4px;
+    border-radius: 0px;
     height: 36px; }
     .el-radio--medium.is-bordered .el-radio__label {
       font-size: 14px; }
@@ -384,7 +384,7 @@
       width: 14px; }
   .el-radio--small.is-bordered {
     padding: 8px 15px 0 10px;
-    border-radius: 3px;
+    border-radius: -1px;
     height: 32px; }
     .el-radio--small.is-bordered .el-radio__label {
       font-size: 12px; }
@@ -393,7 +393,7 @@
       width: 12px; }
   .el-radio--mini.is-bordered {
     padding: 6px 15px 0 10px;
-    border-radius: 3px;
+    border-radius: -1px;
     height: 28px; }
     .el-radio--mini.is-bordered .el-radio__label {
       font-size: 12px; }
@@ -423,22 +423,22 @@
       background-color: #F5F7FA;
       border-color: #E4E7ED; }
       .el-radio__input.is-disabled.is-checked .el-radio__inner::after {
-        background-color: #C0C4CC; }
+        background-color: #666; }
     .el-radio__input.is-disabled + span.el-radio__label {
-      color: #C0C4CC;
+      color: #666;
       cursor: not-allowed; }
     .el-radio__input.is-checked .el-radio__inner {
-      border-color: #409EFF;
-      background: #409EFF; }
+      border-color: #3374b4;
+      background: #3374b4; }
       .el-radio__input.is-checked .el-radio__inner::after {
         -webkit-transform: translate(-50%, -50%) scale(1);
         transform: translate(-50%, -50%) scale(1); }
     .el-radio__input.is-checked + .el-radio__label {
-      color: #409EFF; }
+      color: #3374b4; }
     .el-radio__input.is-focus .el-radio__inner {
-      border-color: #409EFF; }
+      border-color: #3374b4; }
   .el-radio__inner {
-    border: 1px solid #DCDFE6;
+    border: 1px solid #222;
     border-radius: 100%;
     width: 14px;
     height: 14px;
@@ -449,7 +449,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box; }
     .el-radio__inner:hover {
-      border-color: #409EFF; }
+      border-color: #3374b4; }
     .el-radio__inner::after {
       width: 4px;
       height: 4px;
@@ -478,8 +478,8 @@
   .el-radio:focus:not(.is-focus):not(:active):not(.is-disabled) {
     /*获得焦点时 样式提醒*/ }
     .el-radio:focus:not(.is-focus):not(:active):not(.is-disabled) .el-radio__inner {
-      -webkit-box-shadow: 0 0 2px 2px #409EFF;
-      box-shadow: 0 0 2px 2px #409EFF; }
+      -webkit-box-shadow: 0 0 2px 2px #3374b4;
+      box-shadow: 0 0 2px 2px #3374b4; }
   .el-radio__label {
     font-size: 14px;
     padding-left: 10px; }

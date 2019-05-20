@@ -294,7 +294,7 @@
       .el-carousel__indicators--outside .el-carousel__indicator:hover button {
         opacity: 0.64; }
       .el-carousel__indicators--outside button {
-        background-color: #C0C4CC;
+        background-color: #666;
         opacity: 0.24; }
     .el-carousel__indicators--labels {
       left: 0;
