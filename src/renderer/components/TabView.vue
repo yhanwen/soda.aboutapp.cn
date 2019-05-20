@@ -77,13 +77,13 @@ export default {
       flex: 0 0 38px;
       overflow: hidden;
       overflow-x: auto;
-      background-color: lighten(@gray-dark, 10);
+      background-color: lighten(@gray-dark, 3);
       border-bottom:0;
       .el-tabs__item {
         padding-right: 27px !important;
         padding-left: 15px !important;
-        border-right-color: lighten(@gray-dark, 7);
-        border-left-color: lighten(@gray-dark, 7);
+        border-right-color: @gray-dark;
+        border-left-color: @gray-dark;
       }
       .el-tabs__item .el-icon-close {
         transition: none;

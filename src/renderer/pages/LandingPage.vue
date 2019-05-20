@@ -45,6 +45,7 @@ body {
 }
 
 .soda-frame-page {
+  padding-top: @titleHeight;
   position: absolute;
   top: 0;
   left: 0;
@@ -52,7 +53,6 @@ body {
   bottom: 0;
   display: flex;
   background: @gray-dark;
-
   .side-wrapper {
     flex: 0 0 300px;
     background: lighten(@gray-dark, 2);
