@@ -56,11 +56,13 @@ body {
   .side-wrapper {
     flex: 0 0 300px;
     background: lighten(@gray-dark, 2);
+    -webkit-app-region: no-drag;
   }
 
   .main-wrapper {
     width: 100%;
     position: relative;
+    -webkit-app-region: no-drag;
   }
 }
 </style>

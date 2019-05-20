@@ -68,13 +68,16 @@ export default {
     };
   },
   methods: {
-    handleShowAddForm() {
+    resetForm() {
       Object.assign(this.form, {
         host: 'localhost',
         port: '7687',
         user: '',
         password: '',
       });
+    },
+    handleShowAddForm() {
+      this.resetForm();
       this.showAddForm = true;
     },
     hideAddForm() {

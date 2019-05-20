@@ -1,57 +1,54 @@
 <template>
-<el-tabs class="app-tab-view" v-model="editableTabsValue" type="border-card" closable @edit="handleTabsEdit">
+<el-tabs class="app-tab-view" :value="editableTabsValue" type="border-card" :closable="closable" @tab-click="handleSwitchTab" @tab-remove="handleCloseTab">
   <el-tab-pane :key="item.name" v-for="(item) in editableTabs" :label="item.title" :name="item.name">
-    {{item.content}}
+    <keep-alive> <component :is="currentView.component" v-bind="currentView.props"></component> </keep-alive>
   </el-tab-pane>
 </el-tabs>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+import WelcomeView from './TabViews/WelcomeView';
+const views = {
+  welcome: WelcomeView,
+};
 export default {
   data() {
     return {
-      editableTabsValue: '2',
-      editableTabs: [{
-        title: 'Tab 1',
-        name: '1',
-        content: 'Tab 1 content',
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content',
-      }],
       tabIndex: 1,
     };
   },
+  computed: {
+    ...mapState('Tabs', {
+      editableTabs: (state) => {
+        const group = state.groups[state.activeGroup];
+        return group.tabs;
+      },
+      editableTabsValue: (state) => {
+        const group = state.groups[state.activeGroup];
+        return group.active;
+      },
+      currentView: (state) => {
+        const group = state.groups[state.activeGroup];
+        const viewInfo = state.views[group.active];
+        return {
+          component: views[viewInfo.component],
+          props: viewInfo.props,
+        };
+      },
+      closable: (state) => {
+        const group = state.groups[state.activeGroup];
+        return state.activeGroup !== 'welcome' || group.tabs.length > 1;
+      },
+    }),
+  },
   methods: {
-    handleTabsEdit(targetName, action) {
-      if (action === 'add') {
-        this.tabIndex += 1;
-        const newTabName = `${this.tabIndex}`;
-        this.editableTabs.push({
-          title: 'New Tab',
-          name: newTabName,
-          content: 'New Tab content',
-        });
-        this.editableTabsValue = newTabName;
-      }
-      if (action === 'remove') {
-        const tabs = this.editableTabs;
-        let activeName = this.editableTabsValue;
-        if (activeName === targetName) {
-          tabs.forEach((tab, index) => {
-            if (tab.name === targetName) {
-              const nextTab = tabs[index + 1] || tabs[index - 1];
-              if (nextTab) {
-                activeName = nextTab.name;
-              }
-            }
-          });
-        }
-
-        this.editableTabsValue = activeName;
-        this.editableTabs = tabs.filter(tab => tab.name !== targetName);
-      }
+    ...mapActions('Tabs', ['switchTab', 'removeTab']),
+    handleSwitchTab({ $props: props }) {
+      this.switchTab(props.name);
+    },
+    handleCloseTab(name) {
+      this.removeTab(name);
     },
   },
 };
@@ -117,6 +114,7 @@ export default {
     }
     .el-tabs__content {
       height: 100%;
+      color: @gray-light;
     }
   }
 }
