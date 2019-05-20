@@ -1,16 +1,31 @@
 <template>
 <div id="app">
   <div class="window-title">
-    Soda
+    {{this.title}}
   </div>
   <router-view></router-view>
 </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import 'visual-editor/lib/visualEditor.css';
 export default {
   name: 'soda',
+  computed: {
+    ...mapState('Tabs', {
+      title: (state) => {
+        const group = state.groups[state.activeGroup];
+        let title = 'Soda';
+        group.tabs.forEach((tab) => {
+          if (tab.name === group.active) {
+            title = `${tab.title}-${title}`;
+          }
+        });
+        return title;
+      },
+    }),
+  },
 };
 </script>
 
