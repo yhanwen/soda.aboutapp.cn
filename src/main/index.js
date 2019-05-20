@@ -19,13 +19,13 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 700,
+    height: 800,
     useContentSize: true,
     width: 1300,
     backgroundColor: '#000',
     title: 'Soda',
     titleBarStyle: 'hidden',
-    simpleFullscreen: true,
+    fullscreenable: false,
   });
 
   mainWindow.loadURL(winURL);
