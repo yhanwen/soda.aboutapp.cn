@@ -41,13 +41,13 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+  font-weight: 300;
   font-family: PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,"\5FAE\8F6F\96C5\9ED1",STHeitiSC-Light,simsun,"\5B8B\4F53",WenQuanYi Zen Hei,WenQuanYi Micro Hei,"sans-serif";
 }
 
 .soda-frame-page {
-  padding-top: @titleHeight;
   position: absolute;
-  top: 0;
+  top: @titleHeight;
   left: 0;
   right: 0;
   bottom: 0;

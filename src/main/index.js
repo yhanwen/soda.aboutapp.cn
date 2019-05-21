@@ -20,14 +20,13 @@ function createWindow() {
    */
   mainWindow = new BrowserWindow({
     height: 800,
-    useContentSize: true,
     width: 1300,
     backgroundColor: '#000',
     title: 'Soda',
     titleBarStyle: 'hidden',
     fullscreenable: false,
   });
-
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(winURL);
 
   mainWindow.on('closed', () => {

@@ -1,6 +1,22 @@
 <template>
 <div class="tab-welcome-view">
-  Welcome! {{this.date}} <el-button @click="handleOpenTab" size="mini">开新tab</el-button>
+  <!-- <div class="content-wrapper">
+    <div class="hd">
+      <div class="logo"><img src="~@/assets/images/logo.png" alt=""></div>
+      <div class="text">Soda for Neo4j</div>
+    </div>
+    <div class="main">
+      <div class="features">
+        <section>
+          <h3>Connections</h3>
+          <div class="list">
+            <div class="item"><el-button type="text">New Connections</el-button></div>
+            <div class="item"><el-button type="text">New Connections</el-button></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div> -->
 </div>
 </template>
 

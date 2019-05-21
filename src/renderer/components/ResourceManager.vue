@@ -66,7 +66,7 @@ export default {
     line-height: @collapseHeaderHeight;
     font-size: 12px;
     padding-left: 10px;
-    background: @gray;
+    background: lighten(@gray-dark, 7);
     color: @white;
     border-bottom: 0;
   }

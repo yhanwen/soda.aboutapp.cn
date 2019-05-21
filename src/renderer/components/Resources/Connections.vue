@@ -16,49 +16,68 @@
       创建连接
     </span>
   </div>
-  <el-form ref="form" :model="form" label-width="40px" class="form-add" size="mini" :class="{show: showAddForm}">
-    <el-form-item label="主机">
+  <el-form
+    ref="form"
+    :model="form"
+    label-width="40px"
+    class="form-add"
+    size="mini"
+    :rules="rules"
+    :class="{show: showAddForm}">
+    <el-form-item label="主机" prop="host">
       <el-input v-model="form.host" placeholder="主机IP"></el-input>
     </el-form-item>
-    <el-form-item label="端口">
+    <el-form-item label="端口" prop="port">
       <el-input v-model="form.port" placeholder="主机端口"></el-input>
     </el-form-item>
-    <el-form-item label="账号">
+    <el-form-item label="账号" prop="user">
       <el-input v-model="form.user" placeholder="用户名"></el-input>
     </el-form-item>
-    <el-form-item label="密码">
+    <el-form-item label="密码" prop="password">
       <el-input v-model="form.password" type="password" placeholder="密码"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">立即创建</el-button>
+      <el-button type="primary" @click="onSubmit">创建</el-button>
       <el-button @click="hideAddForm">取消</el-button>
+      <el-button @click="handleTestConnection" type="text">测试连接</el-button>
     </el-form-item>
   </el-form>
 </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+import { testConnection } from '../../services/neo4j';
 export default {
   data() {
     return {
       showAddForm: false,
-      connections: [
-        // {
-        //   id: 1,
-        //   name: 'localhost',
-        //   status: 'connected',
-        // },
-        // {
-        //   id: 2,
-        //   name: '192.168.1.218',
-        //   status: 'failed',
-        // },
-        // {
-        //   id: 3,
-        //   name: '192.168.1.254',
-        //   status: 'disconnected',
-        // },
-      ],
+      rules: {
+        host: [{
+          required: true,
+          message: '请输入主机地址',
+          trigger: 'submit',
+        },
+        ],
+        port: [{
+          required: true,
+          message: '请输入端口',
+          trigger: 'submit',
+        },
+        ],
+        user: [{
+          required: true,
+          message: '请输入用户名',
+          trigger: 'submit',
+        },
+        ],
+        password: [{
+          required: true,
+          message: '请输入密码',
+          trigger: 'submit',
+        },
+        ],
+      },
       form: {
         host: 'localhost',
         port: '7687',
@@ -67,8 +86,15 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapState('Connections', {
+      connections: state => state.connections,
+    }),
+  },
   methods: {
+    ...mapActions('Connections', ['addConnection']),
     resetForm() {
+      this.$refs.form.clearValidate();
       Object.assign(this.form, {
         host: 'localhost',
         port: '7687',
@@ -77,14 +103,40 @@ export default {
       });
     },
     handleShowAddForm() {
-      this.resetForm();
       this.showAddForm = true;
     },
     hideAddForm() {
+      this.resetForm();
       this.showAddForm = false;
     },
+    handleTestConnection() {
+      this.$refs.form.validate(async (valid) => {
+        if (valid) {
+          this.$refs.form.clearValidate();
+          const fail = await testConnection(this.form);
+          if (fail) {
+            this.$message.error(`${fail}`);
+          } else {
+            this.$message.success('测试成功');
+          }
+        } else {
+          return false;
+        }
+        return true;
+      });
+    },
     onSubmit() {
-
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.$refs.form.clearValidate();
+          this.addConnection(this.form);
+          this.hideAddForm();
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+        return true;
+      });
     },
   },
 };
@@ -98,6 +150,7 @@ export default {
   @formHeight: 260px;
   position: relative;
   min-height: @formHeight;
+
   .list {
     padding: 10px 5px;
 
@@ -151,7 +204,7 @@ export default {
 
   .empty-add {
     text-align: center;
-    padding: 50px 0 30px;
+    padding: 70px 0 0px;
     color: @gray-light;
     transition: all 0.4s;
     cursor: pointer;
@@ -169,7 +222,6 @@ export default {
     .text {}
   }
 
-  
   .form-add {
     min-height: @formHeight;
     box-sizing: border-box;
@@ -180,10 +232,15 @@ export default {
     bottom: 0;
     background: lighten(@gray-dark, 1);
     z-index: 100;
-    padding: 20px 20px 10px;
+    padding: 20px 17px 10px;
     visibility: hidden;
     transform: translate(100%, 0);
     transition: all 0.4s;
+    .el-form-item__label {
+      &:before {
+        display: none;
+      }
+    }
     &.show {
       visibility: visible;
       transform: translate(0, 0);
