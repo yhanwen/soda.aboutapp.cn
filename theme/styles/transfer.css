@@ -472,7 +472,7 @@
   display: inline-block;
   width: 100%;
   vertical-align: bottom;
-  font-size: 14px; }
+  font-size: 12px; }
   .el-textarea__inner {
     display: block;
     resize: vertical;
@@ -529,7 +529,7 @@
 
 .el-input {
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   width: 100%; }
   .el-input::-webkit-scrollbar {
@@ -550,7 +550,7 @@
         width: 6px; }
   .el-input .el-input__clear {
     color: #666;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     cursor: pointer;
     -webkit-transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1120,7 +1120,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   padding: 12px 20px;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 0px; }
   .el-button + .el-button {
     margin-left: 10px; }
@@ -1373,7 +1373,7 @@
         border-color: #e9e9eb; }
   .el-button--medium {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0px; }
     .el-button--medium.is-round {
       padding: 10px 20px; }
@@ -1840,7 +1840,7 @@
 .el-checkbox {
   color: #606266;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -1871,7 +1871,7 @@
       height: 36px; }
       .el-checkbox.is-bordered.el-checkbox--medium .el-checkbox__label {
         line-height: 17px;
-        font-size: 14px; }
+        font-size: 12px; }
       .el-checkbox.is-bordered.el-checkbox--medium .el-checkbox__inner {
         height: 14px;
         width: 14px; }
@@ -2038,7 +2038,7 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     padding: 12px 20px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0; }
     .el-checkbox-button__inner.is-round {
       padding: 12px 20px; }
@@ -2083,7 +2083,7 @@
     border-radius: 0 0px 0px 0; }
   .el-checkbox-button--medium .el-checkbox-button__inner {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0; }
     .el-checkbox-button--medium .el-checkbox-button__inner.is-round {
       padding: 10px 20px; }
@@ -2104,7 +2104,7 @@
   font-size: 0; }
 
 .el-transfer {
-  font-size: 14px; }
+  font-size: 12px; }
   .el-transfer__buttons {
     display: inline-block;
     vertical-align: middle;

@@ -31,14 +31,21 @@ const mutations = {
     state.nodeLabels = [];
     state.relationTypes = [];
   },
-  EDITCONNECTIONS(state, connection) {
-    const { user, host, port } = connection;
+  EDITCONNECTION(state, connection) {
+    const {
+      user, host, port, password,
+    } = connection;
     connection.name = `${user}@${host}:${port}`;
     connection.status = 'disconnected';
     state.connections.forEach((c) => {
       c.active = false;
       if (c.status === 'connected') {
         c.status = 'disconnected';
+      }
+      if (c.id === connection.id) {
+        Object.assign(c, {
+          user, host, port, password,
+        });
       }
     });
   },
@@ -94,8 +101,9 @@ const actions = {
     commit('ADDCONNECTION', conn);
     dispatch('connectConnection', conn);
   },
-  editConnection({ commit }, connection) {
+  editConnection({ commit, dispatch }, connection) {
     commit('EDITCONNECTION', Object.assign({}, connection));
+    dispatch('connectConnection', connection);
   },
   async connectConnection({ commit, dispatch }, connection) {
     const conn = Object.assign({}, connection);
@@ -112,26 +120,31 @@ const actions = {
       commit('CONNECTING', 2);
     }
     commit('CONNECT', conn);
-    dispatch('activeConnection', connection);
+    dispatch('activeConnection', conn);
   },
   activeConnection({ commit, dispatch }, connection) {
     commit('ACTIVECONNECTION', Object.assign({}, connection));
     dispatch('getAllNodeLabels', connection);
     dispatch('getAllRelationTypes', connection);
-    dispatch('Tabs/switchGroup', {
-      groupId: connection.id,
-      title: connection.name,
-      component: 'welcome',
-      props: {
+    if (connection.status === 'connected') {
+      dispatch('Tabs/switchGroup', {
+        groupId: connection.id,
+        title: connection.name,
+        component: 'welcome',
+        props: {
 
-      },
-    }, {
-      root: true,
-    });
+        },
+      }, {
+        root: true,
+      });
+    }
   },
-  deleteConnection({ commit }, connection) {
+  deleteConnection({ commit, dispatch }, connection) {
     disconnect(connection.id);
     commit('DELETECONNECTION', Object.assign({}, connection));
+    dispatch('Tabs/removeGroup', connection.id, {
+      root: true,
+    });
   },
   resetAllConnections({ commit, dispatch }) {
     dispatch('Tabs/clearGroup', null, {
@@ -143,7 +156,7 @@ const actions = {
     let active = false;
     state.connections.forEach((c) => {
       if (connection.id === c.id && c.active) {
-        active = true;
+        active = c;
       }
     });
     if (!active) return;
@@ -151,7 +164,7 @@ const actions = {
     commit('NODELABELS', []);
     commit('LOADINGLABELS', 1);
     const nodeLabels = await session.getAllNodeLabels();
-    if (!connection.active) {
+    if (!active.active) {
       return;
     }
     commit('NODELABELS', nodeLabels);
@@ -161,7 +174,7 @@ const actions = {
     let active = false;
     state.connections.forEach((c) => {
       if (connection.id === c.id && c.active) {
-        active = true;
+        active = c;
       }
     });
     if (!active) return;
@@ -169,7 +182,7 @@ const actions = {
     commit('RELATIONTYPES', []);
     commit('LOADINGTYPES', 1);
     const relationTypes = await session.getAllRelationTypes();
-    if (!connection.active) {
+    if (!active.active) {
       return;
     }
     commit('RELATIONTYPES', relationTypes);

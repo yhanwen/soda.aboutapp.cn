@@ -234,7 +234,7 @@
 --------------------------*/
 .el-timeline {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   list-style: none; }
   .el-timeline .el-timeline-item:last-child .el-timeline-item__tail {
     display: none; }

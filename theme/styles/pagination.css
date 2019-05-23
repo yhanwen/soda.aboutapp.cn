@@ -1046,7 +1046,7 @@
   margin: 0;
   text-align: center;
   color: #999;
-  font-size: 14px; }
+  font-size: 12px; }
 
 .el-select-dropdown__wrap {
   max-height: 274px; }
@@ -1297,7 +1297,7 @@
   display: inline-block;
   width: 100%;
   vertical-align: bottom;
-  font-size: 14px; }
+  font-size: 12px; }
   .el-textarea__inner {
     display: block;
     resize: vertical;
@@ -1354,7 +1354,7 @@
 
 .el-input {
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   width: 100%; }
   .el-input::-webkit-scrollbar {
@@ -1375,7 +1375,7 @@
         width: 6px; }
   .el-input .el-input__clear {
     color: #666;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     cursor: pointer;
     -webkit-transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -2143,7 +2143,7 @@
 /* Break-point
 --------------------------*/
 .el-select-dropdown__item {
-  font-size: 14px;
+  font-size: 12px;
   padding: 0 20px;
   position: relative;
   white-space: nowrap;
@@ -2733,7 +2733,7 @@
       -webkit-transform: rotateZ(0deg);
       transform: rotateZ(0deg); }
     .el-select .el-input .el-select__caret.is-show-close {
-      font-size: 14px;
+      font-size: 12px;
       text-align: center;
       -webkit-transform: rotateZ(180deg);
       transform: rotateZ(180deg);
@@ -2757,7 +2757,7 @@
     padding: 0;
     margin-left: 15px;
     color: #666;
-    font-size: 14px;
+    font-size: 12px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

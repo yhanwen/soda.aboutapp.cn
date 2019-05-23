@@ -354,7 +354,7 @@
   display: inline-block;
   white-space: nowrap;
   outline: none;
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 30px;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -378,7 +378,7 @@
     border-radius: 0px;
     height: 36px; }
     .el-radio--medium.is-bordered .el-radio__label {
-      font-size: 14px; }
+      font-size: 12px; }
     .el-radio--medium.is-bordered .el-radio__inner {
       height: 14px;
       width: 14px; }
@@ -481,5 +481,5 @@
       -webkit-box-shadow: 0 0 2px 2px #3374b4;
       box-shadow: 0 0 2px 2px #3374b4; }
   .el-radio__label {
-    font-size: 14px;
+    font-size: 12px;
     padding-left: 10px; }

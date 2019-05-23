@@ -2,7 +2,7 @@
 <div class="connections-wrapper">
   <div class="list" v-if="connections && connections.length">
     <div class="item item-add" @click="handleShowAddForm">
-      <i class="status el-icon-document-add"></i>
+      <i class="status el-icon-folder-add"></i>
       <span class="name">创建新连接</span>
     </div>
     <div
@@ -13,7 +13,8 @@
       @click="handleClickConnect(item)"
       @dblclick="handleDblclickConnect(item)">
       <div class="info">
-        <i class="status el-icon-s-opportunity"></i>
+        <i class="status el-icon-folder" v-if="!item.active"></i>
+        <i class="status el-icon-folder-opened" v-else></i>
         <span class="name">{{item.name}}</span>
       </div>
       <div class="actions">
@@ -251,7 +252,7 @@ export default {
     padding: 10px 5px;
 
     .item {
-      font-size: 14px;
+      font-size: 12px;
       height: 30px;
       align-items: center;
       display: flex;
@@ -275,10 +276,10 @@ export default {
       }
 
       .status {
-        flex: 0 0 26px;
-        text-align: center;
+        flex: 0 0 23px;
+        text-align: left;
         display: block;
-        font-size: 12px;
+        font-size: 14px;
       }
 
       .delete {

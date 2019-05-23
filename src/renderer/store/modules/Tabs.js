@@ -58,6 +58,12 @@ const mutations = {
     }
     state.activeGroup = id;
   },
+  REMOVEGROUP(state, id) {
+    if (!state.groups[id]) {
+      return;
+    }
+    delete state.groups[id];
+  },
   CLEARGROUP(state) {
     Vue.set(state, 'groups', {
       welcome: state.groups.welcome,
@@ -99,6 +105,12 @@ const actions = {
   },
   clearGroup({ commit }) {
     commit('CLEARGROUP');
+  },
+  removeGroup({ commit, state }, groupId) {
+    commit('REMOVEGROUP', groupId);
+    if (groupId === state.activeGroup) {
+      commit('SWITCHGROUP', 'welcome');
+    }
   },
   openNewTab({
     commit,

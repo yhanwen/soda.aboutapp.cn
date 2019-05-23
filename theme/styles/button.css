@@ -366,7 +366,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   padding: 12px 20px;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 0px; }
   .el-button + .el-button {
     margin-left: 10px; }
@@ -619,7 +619,7 @@
         border-color: #e9e9eb; }
   .el-button--medium {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0px; }
     .el-button--medium.is-round {
       padding: 10px 20px; }

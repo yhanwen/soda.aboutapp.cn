@@ -81,6 +81,7 @@ export default {
         padding-left: 15px !important;
         border-right-color: @gray-dark;
         border-left-color: @gray-dark;
+        font-size: 12px;
       }
       .el-tabs__item .el-icon-close {
         transition: none;

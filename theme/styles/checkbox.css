@@ -348,7 +348,7 @@
 .el-checkbox {
   color: #606266;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -379,7 +379,7 @@
       height: 36px; }
       .el-checkbox.is-bordered.el-checkbox--medium .el-checkbox__label {
         line-height: 17px;
-        font-size: 14px; }
+        font-size: 12px; }
       .el-checkbox.is-bordered.el-checkbox--medium .el-checkbox__inner {
         height: 14px;
         width: 14px; }
@@ -546,7 +546,7 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     padding: 12px 20px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0; }
     .el-checkbox-button__inner.is-round {
       padding: 12px 20px; }
@@ -591,7 +591,7 @@
     border-radius: 0 0px 0px 0; }
   .el-checkbox-button--medium .el-checkbox-button__inner {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0; }
     .el-checkbox-button--medium .el-checkbox-button__inner.is-round {
       padding: 10px 20px; }
