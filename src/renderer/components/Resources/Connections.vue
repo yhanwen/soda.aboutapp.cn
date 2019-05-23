@@ -112,10 +112,18 @@ export default {
       //   this.$message.info('正在连接中...');
       // }
       if (newVal === 0 && oldVal === 1) {
-        this.$message.success('连接成功');
+        this.$notify({
+          title: '成功',
+          message: '连接成功',
+          type: 'success',
+        });
       }
       if (newVal === 2 && oldVal === 1) {
-        this.$message.error('连接失败');
+        this.$notify({
+          title: '失败',
+          message: '连接失败',
+          type: 'error',
+        });
       }
     },
   },
@@ -173,14 +181,16 @@ export default {
         center: true,
       }).then(() => {
         this.deleteConnection(item);
-        this.$message({
+        this.$notify({
+          title: '成功',
+          message: '删除成功',
           type: 'success',
-          message: '删除成功!',
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
+        this.$notify({
+          title: '信息',
           message: '已取消删除',
+          type: 'info',
         });
       });
     },
@@ -190,9 +200,15 @@ export default {
           this.$refs.form.clearValidate();
           const fail = await testConnection(this.form);
           if (fail) {
-            this.$message.error(`${fail}`);
+            this.$notify.error({
+              title: '错误',
+              message: `${fail}`,
+            });
           } else {
-            this.$message.success('测试成功');
+            this.$notify.success({
+              title: '成功',
+              message: '连接测试成功',
+            });
           }
         } else {
           return false;
