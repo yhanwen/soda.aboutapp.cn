@@ -5,9 +5,21 @@
       <i class="status el-icon-document-add"></i>
       <span class="name">创建新连接</span>
     </div>
-    <div class="item" v-for="item in connections" :class="item.status" :key="item.id">
-      <i class="status el-icon-s-opportunity"></i>
-      <span class="name">{{item.name}}</span>
+    <div
+      class="item"
+      v-for="item in connections"
+      :class="[item.status, {active: item.active}]"
+      :key="item.id"
+      @click="handleClickConnect(item)"
+      @dblclick="handleDblclickConnect(item)">
+      <div class="info">
+        <i class="status el-icon-s-opportunity"></i>
+        <span class="name">{{item.name}}</span>
+      </div>
+      <div class="actions">
+        <span class="el-icon-edit-outline edit" @click.stop="handleEditItem(item)" title="编辑"></span>
+        <span class="el-icon-delete delete" @click.stop="handleDeleteItem(item)" title="删除"></span>
+      </div>
     </div>
   </div>
   <div class="empty-add" v-else @click="handleShowAddForm">
@@ -46,7 +58,10 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import {
+  mapActions,
+  mapState,
+} from 'vuex';
 import { testConnection } from '../../services/neo4j';
 export default {
   data() {
@@ -57,26 +72,22 @@ export default {
           required: true,
           message: '请输入主机地址',
           trigger: 'submit',
-        },
-        ],
+        }],
         port: [{
           required: true,
           message: '请输入端口',
           trigger: 'submit',
-        },
-        ],
+        }],
         user: [{
           required: true,
           message: '请输入用户名',
           trigger: 'submit',
-        },
-        ],
+        }],
         password: [{
           required: true,
           message: '请输入密码',
           trigger: 'submit',
-        },
-        ],
+        }],
       },
       form: {
         host: 'localhost',
@@ -86,21 +97,60 @@ export default {
       },
     };
   },
+  mounted() {
+    this.resetAllConnections();
+  },
   computed: {
     ...mapState('Connections', {
       connections: state => state.connections,
+      connecting: state => state.connecting,
     }),
   },
+  watch: {
+    connecting(newVal, oldVal) {
+      // if (newVal === 1) {
+      //   this.$message.info('正在连接中...');
+      // }
+      if (newVal === 0 && oldVal === 1) {
+        this.$message.success('连接成功');
+      }
+      if (newVal === 2 && oldVal === 1) {
+        this.$message.error('连接失败');
+      }
+    },
+  },
   methods: {
-    ...mapActions('Connections', ['addConnection']),
+    ...mapActions('Connections', [
+      'addConnection',
+      'editConnection',
+      'connectConnection',
+      'deleteConnection',
+      'activeConnection',
+      'resetAllConnections',
+    ]),
     resetForm() {
       this.$refs.form.clearValidate();
-      Object.assign(this.form, {
+      this.form = Object.assign({}, {
         host: 'localhost',
         port: '7687',
         user: '',
         password: '',
       });
+    },
+    getConnection(id) {
+      let conn;
+      this.connections.forEach((c) => {
+        if (c.id === id) {
+          conn = c;
+        }
+      });
+      return conn;
+    },
+    async handleDblclickConnect(item) {
+      this.connectConnection(item);
+    },
+    handleClickConnect(item) {
+      this.activeConnection(item);
     },
     handleShowAddForm() {
       this.showAddForm = true;
@@ -108,6 +158,31 @@ export default {
     hideAddForm() {
       this.resetForm();
       this.showAddForm = false;
+    },
+    handleEditItem(item) {
+      Object.assign(this.form, {
+        ...item,
+      });
+      this.showAddForm = true;
+    },
+    handleDeleteItem(item) {
+      this.$confirm('此操作将永久删除该连接, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true,
+      }).then(() => {
+        this.deleteConnection(item);
+        this.$message({
+          type: 'success',
+          message: '删除成功!',
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除',
+        });
+      });
     },
     handleTestConnection() {
       this.$refs.form.validate(async (valid) => {
@@ -129,7 +204,12 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.$refs.form.clearValidate();
-          this.addConnection(this.form);
+          if (this.form.id) {
+            this.editConnection(this.form);
+          } else {
+            this.addConnection(this.form);
+          }
+
           this.hideAddForm();
         } else {
           console.log('error submit!!');
@@ -161,20 +241,73 @@ export default {
       display: flex;
       padding: 0 10px;
       color: @gray-light;
+      justify-content: space-between;
+      cursor: pointer;
 
       &:hover {
+        background: lighten(@gray-dark, 4);
+      }
+
+      &.active {
         background: @gray-darker;
-        cursor: pointer;
+      }
+
+      .info,
+      .actions {
+        display: flex;
+        align-items: center;
       }
 
       .status {
-        flex: 0 0 30px;
+        flex: 0 0 26px;
         text-align: center;
         display: block;
         font-size: 12px;
       }
 
-      .name {}
+      .delete {
+        color: @gray;
+      }
+
+      &:hover {
+        .delete {
+          color: @gray-light;
+
+          &:hover {
+            color: @red;
+          }
+        }
+      }
+
+      .edit {
+        margin-right: 5px;
+        color: @gray;
+      }
+
+      &:hover {
+        .edit {
+          color: @gray-light;
+
+          &:hover {
+            color: @blue;
+          }
+        }
+      }
+
+      .active {
+        &:before {
+          content: '';
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 4px;
+          background: @gray;
+        }
+
+        &.show:before {
+          background: @green;
+        }
+      }
 
       &.connected {
         .status {
@@ -197,6 +330,7 @@ export default {
       }
 
       &.item-add {
+        justify-content: start;
         margin-bottom: 10px;
       }
     }
@@ -236,11 +370,13 @@ export default {
     visibility: hidden;
     transform: translate(100%, 0);
     transition: all 0.4s;
+
     .el-form-item__label {
       &:before {
         display: none;
       }
     }
+
     &.show {
       visibility: visible;
       transform: translate(0, 0);
