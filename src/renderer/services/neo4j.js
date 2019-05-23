@@ -13,16 +13,19 @@ const Session = class {
     if (!refresh && this.nodeLabels.length) {
       return this.nodeLabels;
     }
-    const res = await this.session.run('MATCH (n) RETURN distinct labels(n) as labels, count(*) as count ORDER BY count DESC');
+    const res = await this.session.run('CALL db.labels()');
     const { records } = res;
     const labels = {};
     records.forEach((record) => {
-      const lbls = record.get('labels');
-      const cnt = record.get('count') - 0;
-      lbls.forEach((l) => {
-        labels[l] = labels[l] || 0;
-        labels[l] += cnt;
-      });
+      const lbl = record.get('label');
+      const cnt = 0;
+      labels[lbl] = labels[lbl] || 0;
+      labels[lbl] += cnt;
+      // const cnt = record.get('count') - 0;
+      // lbls.forEach((l) => {
+      //   labels[l] = labels[l] || 0;
+      //   labels[l] += cnt;
+      // });
     });
     this.nodeLabels = Object.keys(labels).map(l => ({ label: l, count: labels[l] }));
     return this.nodeLabels;
@@ -31,12 +34,13 @@ const Session = class {
     if (!refresh && this.relationTypes.length) {
       return this.relationTypes;
     }
-    const res = await this.session.run('MATCH ()-[n]-() RETURN distinct type(n) as type, count(*) as count ORDER BY count DESC');
+    const res = await this.session.run('call db.relationshipTypes()');
     const { records } = res;
     const types = {};
     records.forEach((record) => {
-      const type = record.get('type');
-      const cnt = record.get('count') - 0;
+      const type = record.get('relationshipType');
+      const cnt = 0;
+      // const cnt = record.get('count') - 0;
       types[type] = types[type] || 0;
       types[type] += cnt;
     });

@@ -50,7 +50,8 @@
       <el-input v-model="form.password" type="password" placeholder="密码"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">创建</el-button>
+      <el-button type="primary" @click="onSubmit" v-if="!form.id">创建</el-button>
+      <el-button type="primary" @click="onSubmit" v-if="form.id">修改</el-button>
       <el-button @click="hideAddForm">取消</el-button>
       <el-button @click="handleTestConnection" type="text">测试连接</el-button>
     </el-form-item>
@@ -226,10 +227,8 @@ export default {
           } else {
             this.addConnection(this.form);
           }
-
           this.hideAddForm();
         } else {
-          console.log('error submit!!');
           return false;
         }
         return true;

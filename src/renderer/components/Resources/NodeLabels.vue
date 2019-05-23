@@ -1,7 +1,9 @@
 <template>
 <div class="node-labels-wrapper">
   <div class="list" v-if="nodeLabels.length">
-    <span class="tag" v-for="label in nodeLabels" :key="label.label">{{label.label}} <em>({{label.count}})</em></span>
+    <span class="tag" v-for="label in nodeLabels" :key="label.label" @click="showLabelGraph(label.label)">
+      {{label.label}} <em v-if="label.count">({{label.count}})</em>
+    </span>
   </div>
   <div class="empty" v-else-if="loadingLabels">
     加载中...
@@ -14,6 +16,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { pool } from '../../services/neo4j';
 export default {
   data() {
     return {
@@ -24,7 +27,11 @@ export default {
     ...mapState('Connections', {
       nodeLabels: state => state.nodeLabels,
       loadingLabels: state => state.loadingLabels,
+      currentConnection: state => state.currentConnection,
     }),
+    session() {
+      return pool[this.currentConnection.id];
+    },
   },
 };
 </script>
