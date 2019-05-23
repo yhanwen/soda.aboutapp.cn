@@ -1,7 +1,7 @@
 <template>
 <div class="node-labels-wrapper">
   <div class="list" v-if="nodeLabels.length">
-    <span class="tag" v-for="label in nodeLabels" :key="label.label">{{label.label}}({{label.count}})</span>
+    <span class="tag" v-for="label in nodeLabels" :key="label.label">{{label.label}} <em>({{label.count}})</em></span>
   </div>
   <div class="empty" v-else-if="loadingLabels">
     加载中...
@@ -47,6 +47,10 @@ export default {
       color: @gray-light;
       cursor: pointer;
       transition: none !important;
+      em {
+        color: fadeout(@gray-light, 50);;
+        font-style: normal;
+      }
       &:hover {
         color: @white;
       }

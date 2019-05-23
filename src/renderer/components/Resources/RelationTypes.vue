@@ -1,7 +1,7 @@
 <template>
 <div class="relation-types-wrapper">
   <div class="list" v-if="relationTypes.length">
-    <span class='tag' v-for="label in relationTypes" :key="label.type">{{label.type}}({{label.count}})</span>
+    <span class='tag' v-for="label in relationTypes" :key="label.type">{{label.type}} <em>({{label.count}})</em></span>
   </div>
   <div class="empty" v-else-if="loadingTypes">
     加载中...
@@ -48,6 +48,10 @@ export default {
       color: @gray-light;
       cursor: pointer;
       transition: none !important;
+      em {
+        color: fadeout(@gray-light, 50);;
+        font-style: normal;
+      }
       &:hover {
         color: @white;
       }
