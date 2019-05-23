@@ -1,3 +1,4 @@
+
 import Vue from 'vue';
 const uuidv1 = require('uuid/v1');
 const state = {
@@ -62,6 +63,9 @@ const mutations = {
     if (!state.groups[id]) {
       return;
     }
+    state.groups[id].tabs.forEach((v) => {
+      delete state.views[v.name];
+    });
     delete state.groups[id];
   },
   CLEARGROUP(state) {

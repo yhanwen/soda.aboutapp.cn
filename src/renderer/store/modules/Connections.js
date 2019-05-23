@@ -19,7 +19,7 @@ const mutations = {
   ADDCONNECTION(state, connection) {
     const { user, host, port } = connection;
     connection.name = `${user}@${host}:${port}`;
-    state.connections.push(connection);
+    Vue.set(state.connections, state.connections.length, connection);
   },
   RESETCONNECTIONS(state) {
     state.connections.forEach((c) => {
@@ -52,7 +52,7 @@ const mutations = {
   CONNECT(state, connection) {
     state.connections.forEach((c) => {
       if (connection.status === 'connected') {
-        c.active = false;
+        Vue.set(c, 'active', false);
       }
       if (c.id === connection.id) {
         Vue.set(c, 'status', connection.status);
@@ -66,9 +66,9 @@ const mutations = {
       return;
     }
     state.connections.forEach((c) => {
-      c.active = false;
+      Vue.set(c, 'active', false);
       if (c.id === connection.id) {
-        c.active = true;
+        Vue.set(c, 'active', true);
         state.currentConnection = c;
       }
     });
