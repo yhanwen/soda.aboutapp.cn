@@ -43,17 +43,19 @@ export default {
       display: inline-block;
       padding: 0px 5px;
       border-radius: 3px;
-      border: solid 1px @gray;
-      background: fadeout(@gray-light, 94);
-      color: @gray-light;
+      border: solid 1px fadeout(@yellow, 40);
+      background: fadeout(@yellow, 94);
+      color: fadeout(@white, 20);
       cursor: pointer;
-      transition: none !important;
+      transition: all 0.4s;
       em {
-        color: fadeout(@gray-light, 50);;
+        color: fadeout(@white, 60);;
         font-style: normal;
       }
       &:hover {
-        color: @white;
+        background: fadeout(@white, 94);
+        border: solid 1px fadeout(@white, 40);
+        color: fadeout(@white, 0);
       }
     }
   }
