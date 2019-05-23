@@ -46,8 +46,10 @@ const mutations = {
     }
     if (group.tabs[index]) {
       group.active = group.tabs[index].name;
-    } else {
+    } else if (group.tabs.length) {
       group.active = group.tabs[index - 1].name;
+    } else {
+      state.activeGroup = 'welcome';
     }
   },
   SWITCHGROUP(state, id) {
@@ -89,8 +91,11 @@ const actions = {
   switchTab({ commit }, name) {
     commit('SWITCHTAB', name);
   },
-  switchGroup({ commit }, groupId) {
-    commit('SWITCHGROUP', groupId);
+  switchGroup({ commit, state, dispatch }, tab) {
+    if (!state.groups[tab.groupId] || !state.groups[tab.groupId].tabs.length) {
+      return dispatch('openNewTab', tab);
+    }
+    return commit('SWITCHGROUP', tab.groupId);
   },
   clearGroup({ commit }) {
     commit('CLEARGROUP');

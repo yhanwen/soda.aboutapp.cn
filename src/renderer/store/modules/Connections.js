@@ -112,9 +112,13 @@ const actions = {
       commit('CONNECTING', 2);
     }
     commit('CONNECT', conn);
+    dispatch('activeConnection', connection);
+  },
+  activeConnection({ commit, dispatch }, connection) {
+    commit('ACTIVECONNECTION', Object.assign({}, connection));
     dispatch('getAllNodeLabels', connection);
     dispatch('getAllRelationTypes', connection);
-    dispatch('Tabs/openNewTab', {
+    dispatch('Tabs/switchGroup', {
       groupId: connection.id,
       title: connection.name,
       component: 'welcome',
@@ -122,14 +126,6 @@ const actions = {
 
       },
     }, {
-      root: true,
-    });
-  },
-  activeConnection({ commit, dispatch, state }, connection) {
-    commit('ACTIVECONNECTION', Object.assign({}, connection));
-    dispatch('getAllNodeLabels', connection);
-    dispatch('getAllRelationTypes', connection);
-    dispatch('Tabs/switchGroup', connection.id, {
       root: true,
     });
   },
