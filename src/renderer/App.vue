@@ -17,6 +17,9 @@ export default {
       title: (state) => {
         const group = state.groups[state.activeGroup];
         let title = 'Soda';
+        if (!group) {
+          return title;
+        }
         group.tabs.forEach((tab) => {
           if (tab.name === group.active) {
             title = `${tab.title}-${title}`;

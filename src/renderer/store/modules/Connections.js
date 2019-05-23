@@ -5,7 +5,7 @@ const uuid = require('uuid').v1;
 const state = {
   connections: [],
   connecting: 0,
-  currentConnectionId: null,
+  currentConnection: null,
   nodeLabels: [],
   relationTypes: [],
   loadingLabels: 0,
@@ -50,6 +50,7 @@ const mutations = {
       if (c.id === connection.id) {
         Vue.set(c, 'status', connection.status);
         Vue.set(c, 'active', c.status === 'connected');
+        state.currentConnection = c;
       }
     });
   },
@@ -61,6 +62,7 @@ const mutations = {
       c.active = false;
       if (c.id === connection.id) {
         c.active = true;
+        state.currentConnection = c;
       }
     });
   },
@@ -112,17 +114,33 @@ const actions = {
     commit('CONNECT', conn);
     dispatch('getAllNodeLabels', connection);
     dispatch('getAllRelationTypes', connection);
+    dispatch('Tabs/openNewTab', {
+      groupId: connection.id,
+      title: connection.name,
+      component: 'welcome',
+      props: {
+
+      },
+    }, {
+      root: true,
+    });
   },
-  activeConnection({ commit, dispatch }, connection) {
+  activeConnection({ commit, dispatch, state }, connection) {
     commit('ACTIVECONNECTION', Object.assign({}, connection));
     dispatch('getAllNodeLabels', connection);
     dispatch('getAllRelationTypes', connection);
+    dispatch('Tabs/switchGroup', connection.id, {
+      root: true,
+    });
   },
   deleteConnection({ commit }, connection) {
     disconnect(connection.id);
     commit('DELETECONNECTION', Object.assign({}, connection));
   },
-  resetAllConnections({ commit }) {
+  resetAllConnections({ commit, dispatch }) {
+    dispatch('Tabs/clearGroup', null, {
+      root: true,
+    });
     commit('RESETCONNECTIONS');
   },
   async getAllNodeLabels({ commit, state }, connection) {
@@ -137,6 +155,9 @@ const actions = {
     commit('NODELABELS', []);
     commit('LOADINGLABELS', 1);
     const nodeLabels = await session.getAllNodeLabels();
+    if (!connection.active) {
+      return;
+    }
     commit('NODELABELS', nodeLabels);
     commit('LOADINGLABELS', 0);
   },
@@ -152,6 +173,9 @@ const actions = {
     commit('RELATIONTYPES', []);
     commit('LOADINGTYPES', 1);
     const relationTypes = await session.getAllRelationTypes();
+    if (!connection.active) {
+      return;
+    }
     commit('RELATIONTYPES', relationTypes);
     commit('LOADINGTYPES', 0);
   },

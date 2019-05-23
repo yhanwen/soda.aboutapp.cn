@@ -1,3 +1,4 @@
+import Vue from 'vue';
 const uuidv1 = require('uuid/v1');
 const state = {
   groups: {
@@ -19,6 +20,13 @@ const state = {
 };
 
 const mutations = {
+  ADDGROUP(state, groupId) {
+    Vue.set(state.groups, groupId, state.groups[groupId] || {
+      tabs: [],
+      active: null,
+    });
+    state.activeGroup = groupId;
+  },
   SWITCHTAB(state, name) {
     const group = state.groups[state.activeGroup];
     group.active = name;
@@ -41,6 +49,21 @@ const mutations = {
     } else {
       group.active = group.tabs[index - 1].name;
     }
+  },
+  SWITCHGROUP(state, id) {
+    if (!state.groups[id]) {
+      return;
+    }
+    state.activeGroup = id;
+  },
+  CLEARGROUP(state) {
+    Vue.set(state, 'groups', {
+      welcome: state.groups.welcome,
+    });
+    Vue.set(state, 'views', {
+      welcome: state.views.welcome,
+    });
+    state.activeGroup = 'welcome';
   },
   ADDTAB(state, tab) {
     if (!tab.name) {
@@ -66,9 +89,18 @@ const actions = {
   switchTab({ commit }, name) {
     commit('SWITCHTAB', name);
   },
+  switchGroup({ commit }, groupId) {
+    commit('SWITCHGROUP', groupId);
+  },
+  clearGroup({ commit }) {
+    commit('CLEARGROUP');
+  },
   openNewTab({
     commit,
   }, tab) {
+    if (tab.groupId) {
+      commit('ADDGROUP', tab.groupId);
+    }
     commit('ADDTAB', tab);
   },
 };
