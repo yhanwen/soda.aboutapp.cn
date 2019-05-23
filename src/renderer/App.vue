@@ -11,7 +11,7 @@
 import { mapState } from 'vuex';
 import 'visual-editor/lib/visualEditor.css';
 export default {
-  name: 'soda',
+  name: 'Soda',
   computed: {
     ...mapState('Tabs', {
       title: (state) => {
