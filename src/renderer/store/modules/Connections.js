@@ -130,9 +130,9 @@ const actions = {
       dispatch('Tabs/switchGroup', {
         groupId: connection.id,
         title: connection.name,
-        component: 'welcome',
+        component: 'schema',
         props: {
-
+          connectionId: connection.id,
         },
       }, {
         root: true,

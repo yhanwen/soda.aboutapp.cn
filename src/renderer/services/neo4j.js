@@ -43,6 +43,31 @@ const Session = class {
     this.relationTypes = Object.keys(types).map(l => ({ type: l, count: types[l] }));
     return this.relationTypes;
   }
+  async getSchemaGraph() {
+    const [types, labels] = await Promise.all([
+      this.session.run('MATCH (m)-[r]->(n) RETURN DISTINCT labels(m) as m, type(r) as r, labels(n) as n, count(*) AS count ORDER BY count DESC'),
+      this.session.run('MATCH (m) RETURN DISTINCT labels(m) as m, count(*) AS count ORDER BY count DESC'),
+    ]);
+    const nodes = labels.records.map(label => ({
+      id: label.get('m').join(','),
+      label: label.get('m').join(','),
+      value: label.get('count') - 0,
+      model: {},
+    }));
+
+    const edges = types.records.map(type => ({
+      from: type.get('m').join(','),
+      to: type.get('n').join(','),
+      label: type.get('r'),
+      value: type.get('count') - 0,
+    }));
+
+    const allSchemas = {
+      edges,
+      nodes,
+    };
+    return allSchemas;
+  }
   /**
    * @function close
    */

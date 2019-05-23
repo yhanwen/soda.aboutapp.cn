@@ -1,5 +1,8 @@
 <template>
-<div class="tab-welcome-view">
+<div class="tab-schema-view">
+  <div class="graph">
+    <vis ref="vis" />
+  </div>
   <!-- <div class="content-wrapper">
     <div class="hd">
       <div class="logo"><img src="~@/assets/images/logo.png" alt=""></div>
@@ -22,18 +25,29 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { pool } from '../../services/neo4j';
+import Vis from '../Vis';
 export default {
-  name: 'welcom-view',
+  name: 'schema-view',
   props: {
-    date: {
-      default: 'aaa',
+    connectionId: {
+      default: '',
     },
   },
+  components: { Vis },
   data() {
     return {
+      loading: true,
     };
   },
+  async mounted() {
+    const graph = await this.session.getSchemaGraph();
+    this.$refs.vis.setDataSet(graph);
+  },
   computed: {
+    session() {
+      return pool[this.connectionId];
+    },
   },
   methods: {
     ...mapActions('Tabs', ['openNewTab']),
@@ -53,6 +67,6 @@ export default {
 <style lang="less">
 @import '../../assets/styles/vars.less';
 @import '../../assets/styles/mixins.less';
-.tab-welcome-view {
+.tab-schema-view {
 }
 </style>
