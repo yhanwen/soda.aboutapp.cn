@@ -15,22 +15,29 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { pool } from '../../services/neo4j';
+import { mapState, mapActions } from 'vuex';
 export default {
   data() {
     return {
     };
   },
-  methods: {},
   computed: {
     ...mapState('Connections', {
       nodeLabels: state => state.nodeLabels,
       loadingLabels: state => state.loadingLabels,
-      currentConnection: state => state.currentConnection,
     }),
-    session() {
-      return pool[this.currentConnection.id];
+
+  },
+  methods: {
+    ...mapActions('Tabs', ['openNewTab']),
+    showLabelGraph(label) {
+      this.openNewTab({
+        title: `label#${label}`,
+        component: 'query',
+        props: {
+          cypher: `MATCH (n:${label}) RETURN n LIMIT 100`,
+        },
+      });
     },
   },
 };

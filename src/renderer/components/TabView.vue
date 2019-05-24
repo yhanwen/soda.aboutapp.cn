@@ -25,9 +25,11 @@ import {
 } from 'vuex';
 import WelcomeView from './TabViews/WelcomeView';
 import SchemaView from './TabViews/SchemaView';
+import QueryView from './TabViews/QueryView';
 const views = {
   welcome: WelcomeView,
   schema: SchemaView,
+  query: QueryView,
 };
 export default {
   data() {

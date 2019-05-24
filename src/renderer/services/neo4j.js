@@ -1,4 +1,6 @@
-const neo4j = require('neo4j-driver').v1;
+import neo4j from 'neo4j-driver/lib/v1';
+import _ from 'lodash';
+
 /**
  * @class Session
  * @param {*} session
@@ -71,6 +73,60 @@ const Session = class {
       nodes,
     };
     return allSchemas;
+  }
+  async getGraphByCypher(cypher) {
+    function flatten(input) {
+      if (!input.forEach) {
+        return [input];
+      }
+      let result = [];
+      input.forEach((o) => {
+        result = result.concat(flatten(o));
+      });
+      return result;
+    }
+    function splitNodesAndRelations(records) {
+      const list = flatten(records);
+      const nodes = [];
+      const relations = [];
+      list.forEach((item) => {
+        if (item instanceof neo4j.types.Node) {
+          nodes.push(item);
+        }
+        if (item instanceof neo4j.types.Relationship) {
+          relations.push(item);
+        }
+      });
+      return {
+        nodes,
+        relations,
+      };
+    }
+    // async function getNodesInRecords(records) {
+    //   splitNodesAndRelations(records);
+    // }
+    // async function getRelationsInRecords() {
+    //   // const {nodes, realtions} = splitNodesAndRelations(records);
+    //   // console.log(records);
+    // }
+    let result = {};
+    const res = await this.session.run(cypher);
+    const { nodes, relations } = splitNodesAndRelations(res.records);
+    const visNodes = _.uniqBy(nodes.map(node => ({
+      id: `${node.identity.toNumber()}`,
+      ...node,
+    })), 'id');
+    const visEdges = _.uniqBy(relations.map(r => ({
+      ...r,
+      id: `${r.identity.toNumber()}`,
+      from: `${r.start.toNumber()}`,
+      to: `${r.end.toNumber()}`,
+    })), 'id');
+    result = {
+      edges: visEdges,
+      nodes: visNodes,
+    };
+    return result;
   }
   /**
    * @function close

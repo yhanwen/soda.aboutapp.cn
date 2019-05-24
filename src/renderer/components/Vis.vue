@@ -6,7 +6,7 @@
 
 <script>
 import vis from 'vis';
-let networkInst = null;
+// let networkInst = null;
 export default {
   props: {
     options: {
@@ -58,13 +58,13 @@ export default {
   },
   methods: {
     initNetwork() {
-      networkInst = new vis.Network(this.$refs.container, {
+      this.networkInst = new vis.Network(this.$refs.container, {
         nodes: [],
         edges: [],
       }, this.options);
     },
     setDataSet({ nodes, edges }) {
-      networkInst.setData({
+      this.networkInst.setData({
         nodes,
         edges,
       });

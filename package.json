@@ -58,6 +58,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.8.2",
+    "lodash": "^4.17.11",
     "neo4j-driver": "^1.7.4",
     "uuid": "^3.3.2",
     "vis": "^4.21.0",

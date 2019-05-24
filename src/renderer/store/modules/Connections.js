@@ -120,14 +120,14 @@ const actions = {
       commit('CONNECTING', 2);
     }
     commit('CONNECT', conn);
-    dispatch('activeConnection', conn);
+    await dispatch('activeConnection', conn);
   },
-  activeConnection({ commit, dispatch }, connection) {
+  async activeConnection({ commit, dispatch }, connection) {
     commit('ACTIVECONNECTION', Object.assign({}, connection));
     dispatch('getAllNodeLabels', connection);
     dispatch('getAllRelationTypes', connection);
     if (connection.status === 'connected') {
-      dispatch('Tabs/switchGroup', {
+      await dispatch('Tabs/switchGroup', {
         groupId: connection.id,
         title: connection.name,
         component: 'schema',
