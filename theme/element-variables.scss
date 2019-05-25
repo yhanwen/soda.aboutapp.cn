@@ -670,19 +670,19 @@ $--pagination-hover-color: $--color-primary !default;
 /* Popover
 -------------------------- */
 /// color||Color|0
-$--popover-background-color: $--color-white !default;
+$--popover-background-color: #151515 !default;
 /// fontSize||Font|1
 $--popover-font-size: $--font-size-base !default;
 /// color||Color|0
-$--popover-border-color: $--border-color-lighter !default;
+$--popover-border-color: #222 !default;
 $--popover-arrow-size: 6px !default;
 /// padding||Spacing|3
 $--popover-padding: 12px !default;
 $--popover-padding-large: 18px 20px !default;
 /// fontSize||Font|1
-$--popover-title-font-size: 16px !default;
+$--popover-title-font-size: 14px !default;
 /// color||Color|0
-$--popover-title-font-color: $--color-text-primary !default;
+$--popover-title-font-color: #aaaaaa !default;
 
 /* Tooltip
 -------------------------- */

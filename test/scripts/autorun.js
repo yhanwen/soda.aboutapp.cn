@@ -5,7 +5,7 @@ export default {
       title: 'label#Item',
       component: 'query',
       props: {
-        cypher: 'MATCH (n:Item)-[r]-(m) RETURN n, r, m LIMIT 100',
+        cypher: 'MATCH (n)-[r]-(m) RETURN n, r, m LIMIT 100',
       },
     });
   },

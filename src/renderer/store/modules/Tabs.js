@@ -42,6 +42,7 @@ const mutations = {
       }
       return true;
     });
+    delete state.views[name];
     if (group.active !== name) {
       return;
     }

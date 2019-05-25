@@ -6,7 +6,7 @@
     </div>
     <div class="actions">
       <div class="button-wrap">
-        <el-button size="mini" v-if="!isFold">执行</el-button>
+        <el-button class="button" size="mini" v-if="!isFold" @click="runCypher">执行</el-button>
         <div class="info" :class="[info.type]">{{info.message}}</div>
       </div>
       <div class="fold el-icon-arrow-up" v-if="!isFold" @click="fold()">收起</div>
@@ -90,10 +90,10 @@ export default {
   .input-wrapper {
     flex: 0 0 0;
     background: @gray-dark;
-    padding:10px;
+    padding:8px;
     border-bottom: solid 1px darken(@gray-dark, 3);
     .input {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       textarea {
         height: 80px;
       }
@@ -106,8 +106,10 @@ export default {
         display: flex;
         align-items: center;
       }
+      .button {
+        margin-right: 15px;
+      }
       .info {
-        margin-left: 15px;
         font-size: 12px;
         color: @gray;
         &.error {
@@ -120,7 +122,7 @@ export default {
       .fold {
         color: @white;
         font-size: 12px;
-        padding: 10px;
+        padding: 5px 10px;
         cursor: pointer;
         &:before {
           margin-right: 5px;
