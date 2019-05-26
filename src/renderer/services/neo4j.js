@@ -87,8 +87,8 @@ const Session = class {
     }
     function splitNodesAndRelations(records) {
       const list = flatten(records);
-      const nodes = [];
-      const relations = [];
+      let nodes = [];
+      let relations = [];
       list.forEach((item) => {
         if (item instanceof neo4j.types.Node) {
           nodes.push(item);
@@ -96,7 +96,16 @@ const Session = class {
         if (item instanceof neo4j.types.Relationship) {
           relations.push(item);
         }
+        if (item instanceof neo4j.types.Path) {
+          item.segments.forEach((segment) => {
+            const { start, end, relationship } = segment;
+            nodes.push(start, end);
+            relations.push(relationship);
+          });
+        }
       });
+      nodes = _.uniqBy(nodes, 'identity');
+      relations = _.unionBy(relations, 'identity');
       return {
         nodes,
         relations,

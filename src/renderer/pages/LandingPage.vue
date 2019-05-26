@@ -12,7 +12,7 @@
 <script>
 import TabView from '../components/TabView';
 import ResourceManager from '../components/ResourceManager';
-// import AutoRun from '../../../test/scripts/autorun';
+import AutoRun from '../../../test/scripts/autorun';
 export default {
   name: 'landing-page',
   components: {
@@ -23,7 +23,7 @@ export default {
     return {};
   },
   async mounted() {
-    // AutoRun.openLabel(this);
+    AutoRun.openLabel(this);
   },
   computed: {},
   methods: {},
