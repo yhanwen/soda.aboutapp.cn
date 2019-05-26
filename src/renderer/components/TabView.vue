@@ -4,7 +4,8 @@
     class="app-tab-view"
     :value="editableTabsValue"
     type="border-card"
-    :closable="closable"
+    :editable="closable"
+    @tab-add="handleAddTab"
     @tab-click="handleSwitchTab"
     @tab-remove="handleCloseTab">
     <el-tab-pane :key="item.name" v-for="(item) in editableTabs" :label="item.title" :name="item.name">
@@ -71,7 +72,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions('Tabs', ['switchTab', 'removeTab']),
+    ...mapActions('Tabs', ['switchTab', 'removeTab', 'openNewTab']),
     handleSwitchTab({
       $props: props,
     }) {
@@ -79,6 +80,15 @@ export default {
     },
     handleCloseTab(name) {
       this.removeTab(name);
+    },
+    handleAddTab() {
+      this.openNewTab({
+        title: 'New Query',
+        component: 'query',
+        props: {
+          cypher: '',
+        },
+      });
     },
   },
 };
@@ -109,7 +119,20 @@ export default {
         overflow-x: auto;
         background-color: lighten(@gray-dark, 3);
         border-bottom: 0;
-
+        .el-tabs__new-tab {
+          margin: 5px 10px 9px 10px;
+          width: auto;
+          padding: 4px 10px;
+          border: 0;
+          color: @gray-light;
+          &:after {
+            content: '创建查询';
+            display: inline;
+          }
+          &:hover {
+            color: @white;
+          }
+        }
         .el-tabs__item {
           padding-right: 27px !important;
           padding-left: 15px !important;
