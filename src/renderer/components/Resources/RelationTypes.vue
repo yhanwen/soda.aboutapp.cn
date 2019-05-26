@@ -1,7 +1,7 @@
 <template>
 <div class="relation-types-wrapper">
   <div class="list" v-if="relationTypes.length">
-    <span class='tag' v-for="label in relationTypes" :key="label.type">{{label.type}} <em v-if="label.count">({{label.count}})</em></span>
+    <span class='tag' v-for="label in relationTypes" :key="label.type" @click="showTypeGraph(label.type)">{{label.type}} <em v-if="label.count">({{label.count}})</em></span>
   </div>
   <div class="empty" v-else-if="loadingTypes">
     加载中...
@@ -13,18 +13,29 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
   data() {
     return {
     };
   },
-  methods: {},
   computed: {
     ...mapState('Connections', {
       relationTypes: state => state.relationTypes,
       loadingTypes: state => state.loadingTypes,
     }),
+  },
+  methods: {
+    ...mapActions('Tabs', ['openNewTab']),
+    showTypeGraph(label) {
+      this.openNewTab({
+        title: `RelationType#${label}`,
+        component: 'query',
+        props: {
+          cypher: `MATCH p=()-[:${label}]-() RETURN p LIMIT 100`,
+        },
+      });
+    },
   },
 };
 </script>

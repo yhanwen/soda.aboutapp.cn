@@ -32,7 +32,7 @@ export default {
     ...mapActions('Tabs', ['openNewTab']),
     showLabelGraph(label) {
       this.openNewTab({
-        title: `label#${label}`,
+        title: `NodeLabel#${label}`,
         component: 'query',
         props: {
           cypher: `MATCH (n:${label}) RETURN n LIMIT 100`,
