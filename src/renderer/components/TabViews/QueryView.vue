@@ -58,6 +58,14 @@ export default {
   },
   methods: {
     async runCypher() {
+      if (!this.cypherText.trim()) {
+        alert('请输入Cypher');
+        return;
+      }
+      if (this.cypherText.toLowerCase().match(/(create|delete|set|merge)\s/)) {
+        alert('目前只支持查询');
+        return;
+      }
       const res = await this.session.getGraphByCypher(this.cypherText);
       this.$refs.vis.setDataSet(res);
       this.info = {
