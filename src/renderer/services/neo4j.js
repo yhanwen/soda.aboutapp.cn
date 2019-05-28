@@ -10,6 +10,7 @@ const Session = class {
     this.session = session;
     this.nodeLabels = [];
     this.relationTypes = [];
+    this.propertyKeys = [];
   }
   async getAllNodeLabels(refresh) {
     if (!refresh && this.nodeLabels.length) {
@@ -31,6 +32,23 @@ const Session = class {
     });
     this.nodeLabels = Object.keys(labels).map(l => ({ label: l, count: labels[l] }));
     return this.nodeLabels;
+  }
+  async getAllPropertyKeys(refresh) {
+    if (!refresh && this.nodeLabels.length) {
+      return this.nodeLabels;
+    }
+    const res = await this.session.run('CALL db.propertyKeys()');
+    const { records } = res;
+    const types = {};
+    records.forEach((record) => {
+      const type = record.get('propertyKey');
+      const cnt = 0;
+      // const cnt = record.get('count') - 0;
+      types[type] = types[type] || 0;
+      types[type] += cnt;
+    });
+    this.propertyKeys = Object.keys(types).map(l => ({ key: l, count: types[l] }));
+    return this.propertyKeys;
   }
   async getAllRelationTypes(refresh) {
     if (!refresh && this.relationTypes.length) {

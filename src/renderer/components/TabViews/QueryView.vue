@@ -2,7 +2,8 @@
 <div class="tab-query-view">
   <div class="input-wrapper">
     <div class="input" v-if="!isFold">
-      <el-input type="textarea" v-model="cypherText" placeholder="请输入cypher..."></el-input>
+      <cypher-editor :value="cypherText" @change="setCypherText" :db-schema="dbSchema"/>
+      <!-- <el-input type="textarea" v-model="cypherText" placeholder="请输入cypher..."></el-input> -->
     </div>
     <div class="actions">
       <div class="button-wrap">
@@ -23,6 +24,7 @@
 import { mapState } from 'vuex';
 import { pool } from '../../services/neo4j';
 import Vis from '../Vis';
+import CypherEditor from '../CypherEditor/index';
 export default {
   name: 'query-view',
   props: {
@@ -30,7 +32,7 @@ export default {
       default: '',
     },
   },
-  components: { Vis },
+  components: { Vis, CypherEditor },
   data() {
     return {
       cypherText: '',
@@ -50,6 +52,11 @@ export default {
   },
   computed: {
     ...mapState('Connections', {
+      dbSchema: state => ({
+        labels: state.nodeLabels.map(l => `:${l.label}`),
+        relationshipTypes: state.relationTypes.map(l => `:${l.type}`),
+        propertyKeys: state.propertyKeys.map(l => `${l.key}`),
+      }),
       connection: state => state.currentConnection,
     }),
     session() {
@@ -57,6 +64,9 @@ export default {
     },
   },
   methods: {
+    setCypherText(val) {
+      this.cypherText = val;
+    },
     async runCypher() {
       if (!this.cypherText.trim()) {
         alert('请输入Cypher');

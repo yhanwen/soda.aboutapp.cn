@@ -446,6 +446,10 @@ ansi-wrap@0.1.0:
   version "0.1.0"
   resolved "https://registry.npm.taobao.org/ansi-wrap/download/ansi-wrap-0.1.0.tgz#a82250ddb0015e9a27ca82e82ea603bbfa45efaf"
 
+antlr4@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.npm.taobao.org/antlr4/download/antlr4-4.7.0.tgz#297f956ddc06f83397fc0990ecf2e0cf20bfbbee"
+
 anymatch@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/anymatch/download/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"
@@ -2416,6 +2420,10 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/code-point-at/download/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+codemirror@^5.47.0:
+  version "5.47.0"
+  resolved "https://registry.npm.taobao.org/codemirror/download/codemirror-5.47.0.tgz#c13a521ae5660d3acc655af252f4955065293789"
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/collection-visit/download/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"
@@ -2466,14 +2474,7 @@ color@^0.11.0:
     color-convert "^1.3.0"
     color-string "^0.3.0"
 
-color@^3.1.0:
-  version "3.1.1"
-  resolved "https://registry.npm.taobao.org/color/download/color-3.1.1.tgz#7abf5c0d38e89378284e873c207ae2172dcc8a61"
-  dependencies:
-    color-convert "^1.9.1"
-    color-string "^1.5.2"
-
-color@^3.1.1:
+color@^3.1.0, color@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npm.taobao.org/color/download/color-3.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcolor%2Fdownload%2Fcolor-3.1.1.tgz#7abf5c0d38e89378284e873c207ae2172dcc8a61"
   dependencies:
@@ -2983,6 +2984,20 @@ custom-event@~1.0.0:
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.npm.taobao.org/cyclist/download/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
+
+cypher-codemirror@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npm.taobao.org/cypher-codemirror/download/cypher-codemirror-1.1.5.tgz#93329f0a68ec93ed6f1e2f3426d6424248432ed1"
+  dependencies:
+    cypher-editor-support "1.1.5"
+
+cypher-editor-support@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npm.taobao.org/cypher-editor-support/download/cypher-editor-support-1.1.5.tgz#b0824d88e6ffe3f1e57cff853c9253c62c6f53ff"
+  dependencies:
+    antlr4 "4.7.0"
+    fuzzaldrin "2.1.0"
+    lodash "4.17.4"
 
 d3-array@1, d3-array@^1.1.1, d3-array@^1.2.0:
   version "1.2.4"
@@ -4760,6 +4775,10 @@ function-bind@^1.1.1:
 functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/functional-red-black-tree/download/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
+
+fuzzaldrin@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/fuzzaldrin/download/fuzzaldrin-2.1.0.tgz#90204c3e2fdaa6941bb28d16645d418063a90e9b"
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -6820,6 +6839,10 @@ lodash.values@~2.4.1:
   resolved "https://registry.npm.taobao.org/lodash.values/download/lodash.values-2.4.1.tgz#abf514436b3cb705001627978cbcf30b1280eea4"
   dependencies:
     lodash.keys "~2.4.1"
+
+lodash@4.17.4:
+  version "4.17.4"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
 lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.0, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.8.0, lodash@~4.17.10:
   version "4.17.11"

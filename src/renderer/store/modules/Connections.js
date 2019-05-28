@@ -8,6 +8,7 @@ const state = {
   currentConnection: null,
   nodeLabels: [],
   relationTypes: [],
+  propertyKeys: [],
   loadingLabels: 0,
   loadingTypes: 0,
 };
@@ -30,6 +31,7 @@ const mutations = {
     });
     state.nodeLabels = [];
     state.relationTypes = [];
+    state.propertyKeys = [];
   },
   EDITCONNECTION(state, connection) {
     const {
@@ -86,6 +88,9 @@ const mutations = {
   RELATIONTYPES(state, list) {
     state.relationTypes = list;
   },
+  PROPERTYKEYS(state, list) {
+    state.propertyKeys = list;
+  },
   LOADINGLABELS(state, status) {
     state.loadingLabels = status ? 1 : 0;
   },
@@ -125,6 +130,7 @@ const actions = {
   async activeConnection({ commit, dispatch }, connection) {
     commit('ACTIVECONNECTION', Object.assign({}, connection));
     dispatch('getAllNodeLabels', connection);
+    dispatch('getAllPropertyKeys', connection);
     dispatch('getAllRelationTypes', connection);
     if (connection.status === 'connected') {
       await dispatch('Tabs/switchGroup', {
@@ -169,6 +175,22 @@ const actions = {
     }
     commit('NODELABELS', nodeLabels);
     commit('LOADINGLABELS', 0);
+  },
+  async getAllPropertyKeys({ commit, state }, connection) {
+    let active = false;
+    state.connections.forEach((c) => {
+      if (connection.id === c.id && c.active) {
+        active = c;
+      }
+    });
+    if (!active) return;
+    const session = pool[connection.id];
+    commit('PROPERTYKEYS', []);
+    const nodeLabels = await session.getAllPropertyKeys();
+    if (!active.active) {
+      return;
+    }
+    commit('PROPERTYKEYS', nodeLabels);
   },
   async getAllRelationTypes({ commit, state }, connection) {
     let active = false;

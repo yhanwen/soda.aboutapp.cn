@@ -9,5 +9,15 @@ export default {
       },
     });
   },
+  async openEditor(inst) {
+    await inst.$store.dispatch('Connections/connectConnection', inst.$store.state.Connections.connections[0]);
+    await inst.$store.dispatch('Tabs/openNewTab', {
+      title: 'label#Item',
+      component: 'query',
+      props: {
+        cypher: '',
+      },
+    });
+  },
 };
 

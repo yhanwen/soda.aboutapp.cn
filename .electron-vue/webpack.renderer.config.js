@@ -12,9 +12,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
-const fs = require('fs');
-fs.createReadStream('./node_modules/visual-editor/lib/worker.js').pipe(fs.createWriteStream('./static/worker.js'));
-fs.createReadStream('./node_modules/visual-editor/lib/d3.js').pipe(fs.createWriteStream('./static/d3.js'));
+
 // TODO: 调整编译逻辑，升级可视化组件，允许配置加载d3的路径
 
 /**
@@ -32,7 +30,9 @@ let rendererConfig = {
     renderer: path.join(__dirname, '../src/renderer/main.js')
   },
   externals: [
-    ...Object.keys(dependencies || {}).filter(d => !whiteListedModules.includes(d))
+    // ...Object.keys(dependencies || {}).filter(d => {
+    //   return !whiteListedModules.includes(d);
+    // })
   ],
   module: {
     rules: [

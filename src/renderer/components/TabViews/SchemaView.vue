@@ -41,7 +41,7 @@ export default {
     };
   },
   async mounted() {
-    const graph = await this.session.getSchemaGraph();
+    const graph = await this.session.getGraphByCypher('call db.schema()');
     this.$refs.vis.setDataSet(graph);
   },
   computed: {
