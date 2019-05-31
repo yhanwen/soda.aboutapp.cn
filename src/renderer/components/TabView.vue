@@ -185,10 +185,23 @@ export default {
   .view-wrapper {
     height: 100%;
     position: relative;
-    .view {
+    > .view {
       visibility: hidden;
+      transition: all 0.1s;
+      opacity: 0;
+      z-index: 1;
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      transform: scale(0.95);
       &.show {
         visibility: visible;
+        transform: scale(1);
+        z-index: 100;
+        opacity: 1;
       }
     }
   }

@@ -146,6 +146,8 @@ export default {
 @import '../../assets/styles/mixins.less';
 
 .cypher-editor-wrapper {
+  padding: 5px;
+  background-color: lighten(@gray-dark, 2);
   .CodeMirror{
     font-family: Inconsolata, Monaco, "Courier New", Terminal, monospace !important;
     font-size: 13px;
@@ -155,11 +157,11 @@ export default {
     font-family: Inconsolata, Monaco, "Courier New", Terminal, monospace !important;
   }
   .CodeMirror.cm-s-cypher.cm-s-cypher-dark{
-    background: lighten(@gray-dark, 0);
+    background-color: transparent;
     color: @white;
     .CodeMirror-gutters {
-      background-color: lighten(@gray-dark, 0);
-      border-right-color: lighten(@gray-dark, 0);
+      background-color: transparent;
+      border-right-color: transparent;
     }
   }
   .cm-s-cypher {

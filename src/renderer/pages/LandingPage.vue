@@ -23,8 +23,8 @@ export default {
     return {};
   },
   async mounted() {
-    // AutoRun.openLabel(this);
-    AutoRun.openEditor(this);
+    AutoRun.openLabel(this);
+    // AutoRun.openEditor(this);
   },
   computed: {},
   methods: {},

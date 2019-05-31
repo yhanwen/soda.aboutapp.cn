@@ -118,6 +118,9 @@ export default {
   async mounted() {
     this.initNetwork();
   },
+  beforeDestroy() {
+    this.networkInst.destroy();
+  },
   computed: {
     ...mapState('Vis', {
       colorOptions: state => state.colors,

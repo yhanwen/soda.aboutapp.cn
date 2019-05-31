@@ -16,7 +16,7 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 /* Color
 -------------------------- */
 /// color|1|Brand Color|0
-$--color-primary: rgb(51, 116, 180) !default;
+$--color-primary: rgb(39, 124, 65) !default;
 /// color|1|Background Color|4
 $--color-white: #FFFFFF !default;
 /// color|1|Background Color|4
@@ -268,11 +268,11 @@ $--radio-bordered-mini-height: 28px !default;
 /// fontSize||Font|1
 $--radio-button-font-size: $--font-size-base !default;
 /// color||Color|0
-$--radio-button-checked-background-color: $--color-primary !default;
+$--radio-button-checked-background-color: #ccc !default;
 /// color||Color|0
-$--radio-button-checked-font-color: $--color-white !default;
+$--radio-button-checked-font-color: #222 !default;
 /// color||Color|0
-$--radio-button-checked-border-color: $--color-primary !default;
+$--radio-button-checked-border-color: #222 !default;
 $--radio-button-disabled-checked-fill: $--border-color-extra-light !default;
 
 /* Select
@@ -632,17 +632,17 @@ $--dialog-padding-primary: 20px !default;
 /* Table
 -------------------------- */
 /// color||Color|0
-$--table-border-color: $--border-color-lighter !default;
-$--table-border: 1px solid $--table-border-color !default;
+$--table-border-color: #222 !default;
+$--table-border: 1px solid #222 !default;
 /// color||Color|0
-$--table-font-color: $--color-text-regular !default;
+$--table-font-color: #ccc !default;
 /// color||Color|0
-$--table-header-font-color: $--color-text-secondary !default;
+$--table-header-font-color: #fff !default;
 /// color||Color|0
-$--table-row-hover-background-color: $--background-color-base !default;
-$--table-current-row-background-color: $--color-primary-light-9 !default;
+$--table-row-hover-background-color: #151515 !default;
+$--table-current-row-background-color: #333 !default;
 /// color||Color|0
-$--table-header-background-color: $--color-white !default;
+$--table-header-background-color: #151515 !default;
 $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, .12) !default;
 
 /* Pagination

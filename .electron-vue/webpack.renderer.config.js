@@ -30,9 +30,9 @@ let rendererConfig = {
     renderer: path.join(__dirname, '../src/renderer/main.js')
   },
   externals: [
-    // ...Object.keys(dependencies || {}).filter(d => {
-    //   return !whiteListedModules.includes(d);
-    // })
+    ...Object.keys(dependencies || {}).filter(d => {
+      return !whiteListedModules.includes(d) && !d.match(/codemirr/);
+    })
   ],
   module: {
     rules: [
