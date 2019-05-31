@@ -192,44 +192,54 @@ export default {
       //   }
       //   timeout = setTimeout(() => { this.hoverNodeItem = null; }, 300);
       // });
-      this.networkInst.on('hoverNode', (event) => {
+      // this.networkInst.on('hoverNode', (event) => {
+      //   if (timeout) {
+      //     clearTimeout(timeout);
+      //   }
+      //   const {
+      //     node,
+      //   } = event;
+
+      // });
+      this.networkInst.on('click', (event) => {
         if (timeout) {
           clearTimeout(timeout);
         }
         const {
-          node,
+          edges = [], nodes = [],
         } = event;
-        this.nodes.forEach((n) => {
-          if (n.id === node) {
-            this.hoverNodeItem = {
-              label: n.label,
-              tag: n.labels.join('+'),
-              type: n.labels.join(' '),
-              properties: {
-                ...n.properties,
-              },
-            };
-          }
-        });
-      });
-      this.networkInst.on('hoverEdge', (event) => {
-        if (timeout) {
-          clearTimeout(timeout);
+        if (!edges.length && !nodes.length) {
+          this.hoverNodeItem = null;
         }
-        const {
-          edge,
-        } = event;
-        this.edges.forEach((n) => {
-          if (n.id === edge) {
-            this.hoverNodeItem = {
-              label: n.label,
-              type: n.type,
-              properties: {
-                ...n.properties,
-              },
-            };
-          }
-        });
+        if (edges.length === 1 && !nodes.length) {
+          const edge = edges[0];
+          this.edges.forEach((n) => {
+            if (n.id === edge) {
+              this.hoverNodeItem = {
+                label: n.label,
+                type: n.type,
+                properties: {
+                  ...n.properties,
+                },
+              };
+            }
+          });
+        }
+        if (nodes.length === 1) {
+          const node = nodes[0];
+          this.nodes.forEach((n) => {
+            if (n.id === node) {
+              this.hoverNodeItem = {
+                label: n.label,
+                tag: n.labels.join('+'),
+                type: n.labels.join(' '),
+                properties: {
+                  ...n.properties,
+                },
+              };
+            }
+          });
+        }
       });
       this.networkInst.on('dragStart', (event) => {
         const {
