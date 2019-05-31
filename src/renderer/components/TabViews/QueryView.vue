@@ -287,6 +287,9 @@ export default {
   }
   .table-view {
     overflow: auto;
+    th .cell {
+      white-space: nowrap;
+    }
     .el-table {
       background: @gray-dark;
     }
