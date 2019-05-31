@@ -19,5 +19,8 @@ export default {
       },
     });
   },
+  async open218Schema(inst) {
+    await inst.$store.dispatch('Connections/connectConnection', inst.$store.state.Connections.connections[2]);
+  },
 };
 

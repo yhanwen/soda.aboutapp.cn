@@ -193,10 +193,11 @@ export default {
           return;
         }
         const label = n.labels.join('+');
+        const propLabel = n.properties[this.labelStyles[label].prop];
         if (this.labelStyles[label]) {
           n.color = this.labelStyles[label].color;
           n.mass = this.labelStyles[label].size;
-          n.label = n.properties[this.labelStyles[label].prop];
+          n.label = propLabel && propLabel.length ? propLabel : label;
           n.size = this.labelStyles[label].size * 30;
         }
         this.nodes.update(n);
@@ -214,12 +215,14 @@ export default {
           return;
         }
         const label = n.labels.join('+');
+        const propLabel = n.properties[this.labelStyles[label].prop];
         if (this.labelStyles[label]) {
           n.color = this.labelStyles[label].color;
           n.mass = this.labelStyles[label].size;
-          n.label = n.properties[this.labelStyles[label].prop];
+          n.label = propLabel && propLabel.length ? propLabel : label;
           n.size = this.labelStyles[label].size * 30;
         }
+        console.log(n);
         this.nodes.update(n);
       });
 
