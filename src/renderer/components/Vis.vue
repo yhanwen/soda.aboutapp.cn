@@ -1,59 +1,57 @@
 <template>
-<div class="vis-wrapper">
-  <div class="toolbar" v-if="labels.length">
-    <div class="labels">
-      <el-popover
-        v-for="tag in labels"
-        :key="tag"
-        placement="bottom"
-        width="210"
-        trigger="click">
-        <div class="vis-node-style-editor">
-          <section>
-            <span class="label">颜色</span>
-            <div class="options">
-              <span class="color-option" 
-              :style="{backgroundColor: color}" 
-              :class="labelStyles[tag].color === color ? 'active' : ''"
-              v-for="color in colorOptions"
-              :title="color"
-              @click="setLabelStyleWrapper({label: tag, color})"
-              :key="color"></span>
-            </div>
-          </section>
-          <section>
-            <span class="label">尺寸</span>
-            <div class="options sizes">
-              <span class="size-option" 
-              :style="{zoom: size}" 
-              :class="labelStyles[tag].size === size ? 'active' : ''"
-              v-for="size in sizeOptions"
-              :title="size"
-              @click="setLabelStyleWrapper({label: tag, size})"
-              :key="size"></span>
-            </div>
-          </section>
-          <section>
-            <span class="label">显示属性</span>
-            <div class="options props">
-              <span class="prop-option" 
-              :class="labelStyles[tag].prop === prop ? 'active' : ''"
-              v-for="prop in propOptions[tag]"
-              :title="prop"
-              @click="setLabelStyleWrapper({label: tag, prop})"
-              :key="prop">&lt; {{prop}} &gt;</span>
-            </div>
-          </section>
-        </div>
-        <span class="tag" :style="labelTagStyles[tag]" slot="reference">{{tag}}</span>
-      </el-popover>
+  <div class="vis-wrapper">
+    <div class="toolbar" v-if="labels.length">
+      <div class="labels">
+        <el-popover v-for="tag in labels" :key="tag" placement="bottom" width="210" trigger="click">
+          <div class="vis-node-style-editor">
+            <section>
+              <span class="label">颜色</span>
+              <div class="options">
+                <span class="color-option" :style="{backgroundColor: color}" :class="labelStyles[tag].color === color ? 'active' : ''" v-for="color in colorOptions" :title="color" @click="setLabelStyleWrapper({label: tag, color})" :key="color"></span>
+              </div>
+            </section>
+            <section>
+              <span class="label">尺寸</span>
+              <div class="options sizes">
+                <span class="size-option" :style="{zoom: size}" :class="labelStyles[tag].size === size ? 'active' : ''" v-for="size in sizeOptions" :title="size" @click="setLabelStyleWrapper({label: tag, size})" :key="size"></span>
+              </div>
+            </section>
+            <section>
+              <span class="label">显示属性</span>
+              <div class="options props">
+                <span class="prop-option" :class="labelStyles[tag].prop === prop ? 'active' : ''" v-for="prop in propOptions[tag]" :title="prop" @click="setLabelStyleWrapper({label: tag, prop})" :key="prop">&lt; {{prop}} &gt;</span>
+              </div>
+            </section>
+          </div>
+          <span class="tag" :style="labelTagStyles[tag]" slot="reference">{{tag}}</span>
+        </el-popover>
 
+      </div>
+      <div class="options"></div>
+      <div class="info"></div>
     </div>
-    <div class="options"></div>
-    <div class="info"></div>
+    <div class="graph-wrapper">
+      <div class="vis-container" ref="container"></div>
+      <div class="add-ons-pop-tip" :class="{show: hoverNodeItem && !dragging}">
+        <div class="wrapper" v-if="hoverNodeItem">
+          <div class="name">
+          {{hoverNodeItem.label}}
+          </div>
+          <div class="model" v-if="hoverNodeItem.type">
+            <span class="label">类型:</span>
+            <span class="val">{{hoverNodeItem.type}}</span>
+          </div>
+          <div class="props" v-if="Object.keys(hoverNodeItem.properties).length">
+            <div class="prop" v-for="(v, k) in hoverNodeItem.properties" :key="k">
+              <span class="label">{{k}}:</span>
+              <span class="val">{{v}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
-  <div class="vis-container" ref="container"></div>
-</div>
 </template>
 
 <script>
@@ -113,6 +111,8 @@ export default {
     return {
       nodes: [],
       edges: [],
+      hoverNodeItem: null,
+      dragging: false,
     };
   },
   async mounted() {
@@ -162,6 +162,34 @@ export default {
         nodes: [],
         edges: [],
       }, this.options);
+      this.networkInst.on('hoverNode', (event) => {
+        const { node } = event;
+        this.nodes.forEach((n) => {
+          if (n.id === node) {
+            this.hoverNodeItem = {
+              label: n.label,
+              type: n.labels.join(' '),
+              properties: {
+                ...n.properties,
+              },
+            };
+          }
+        });
+      });
+      this.networkInst.on('hoverEdge', (event) => {
+        const { edge } = event;
+        this.edges.forEach((n) => {
+          if (n.id === edge) {
+            this.hoverNodeItem = {
+              label: n.label,
+              type: n.type,
+              properties: {
+                ...n.properties,
+              },
+            };
+          }
+        });
+      });
       this.networkInst.on('dragStart', (event) => {
         const { nodes = [] } = event;
         nodes.forEach((n) => {
@@ -171,6 +199,10 @@ export default {
             physics: false,
           });
         });
+        this.dragging = true;
+      });
+      this.networkInst.on('dragEnd', () => {
+        this.dragging = false;
       });
       this.networkInst.on('doubleClick', (event) => {
         const { nodes = [] } = event;
@@ -222,7 +254,6 @@ export default {
           n.label = propLabel && propLabel.length ? propLabel : label;
           n.size = this.labelStyles[label].size * 30;
         }
-        console.log(n);
         this.nodes.update(n);
       });
 
@@ -343,6 +374,10 @@ export default {
     .options,
     .info {}
   }
+  .graph-wrapper {
+    position: relative;
+    height: 100%;
+  }
 
   .vis-container {
     height: 100%;
@@ -373,6 +408,53 @@ export default {
       background: fadeout(@white, 94);
       border: solid 1px fadeout(@white, 40);
       color: fadeout(@white, 0);
+    }
+  }
+  .add-ons-pop-tip {
+    position: absolute;
+    top:10px;
+    right:10px;
+    width: 240px;
+    background: fadeout(@gray-darker, 50);
+    border: solid 1px fadeout(@gray, 50);
+    color: @white;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    &.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    .wrapper {
+      padding: 15px;
+      font-size: 12px;
+      color: @gray-light;
+      .name {
+        font-size: 14px;
+        font-weight: 500;
+        color: @white;
+        margin-bottom: 5px;
+      }
+      .model {
+        .clearfix();
+      }
+      .label {
+        color: @gray-light;
+      }
+      .val {
+      }
+      .props {
+        border-top: solid 1px fadeout(@gray, 50);
+        margin-top: 7px;
+        padding-top: 7px;
+      }
+      .prop {
+        .clearfix();
+        margin-bottom: 4px;
+        word-wrap: break-word;
+        word-break: break-all;
+
+      }
     }
   }
 }

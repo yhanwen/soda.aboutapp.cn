@@ -47,7 +47,8 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "icon": "build/icons/icon.icns",
+      "darkModeSupport": true
     },
     "win": {
       "icon": "build/icons/icon.ico"

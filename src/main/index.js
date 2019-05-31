@@ -13,6 +13,9 @@ let mainWindow;
 const winURL = process.env.NODE_ENV === 'development'
   ? 'http://localhost:9080'
   : `file://${__dirname}/index.html`;
+const splashURL = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:9080/splash.html'
+  : `file://${__dirname}/splash.html`;
 
 function createWindow() {
   /**
@@ -25,10 +28,33 @@ function createWindow() {
     title: 'Soda',
     titleBarStyle: 'hidden',
     fullscreenable: false,
+    show: false,
+  });
+  const splashWin = new BrowserWindow({
+    height: 481,
+    width: 803,
+    frame: false,
+    transparent: true,
+    title: 'Soda',
+    alwaysOnTop: true,
+    hasShadow: false,
+    maximizable: false,
+    minimizable: false,
+    resizable: false,
+    show: false,
+  });
+  splashWin.loadURL(splashURL);
+  splashWin.once('ready-to-show', () => {
+    splashWin.show();
   });
   mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(winURL);
-
+  mainWindow.once('ready-to-show', () => {
+    setTimeout(() => {
+      mainWindow.show();
+      splashWin.hide();
+    }, 2000);
+  });
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
