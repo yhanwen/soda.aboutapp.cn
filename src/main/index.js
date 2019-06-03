@@ -17,10 +17,12 @@ const splashURL = process.env.NODE_ENV === 'development'
   ? 'http://localhost:9080/splash.html'
   : `file://${__dirname}/splash.html`;
 
+
 function createWindow() {
   /**
    * Initial window options
    */
+  const locale = app.getLocale();
   mainWindow = new BrowserWindow({
     height: 1080,
     width: 1920,
@@ -43,12 +45,12 @@ function createWindow() {
     resizable: false,
     show: false,
   });
-  splashWin.loadURL(splashURL);
+  splashWin.loadURL(`${splashURL}?locale=${locale}`);
   splashWin.once('ready-to-show', () => {
     splashWin.show();
   });
   mainWindow.setMenuBarVisibility(false);
-  mainWindow.loadURL(winURL);
+  mainWindow.loadURL(`${winURL}?locale=${locale}`);
   mainWindow.once('ready-to-show', () => {
     setTimeout(() => {
       mainWindow.show();

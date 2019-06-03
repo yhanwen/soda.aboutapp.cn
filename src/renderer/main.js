@@ -17,10 +17,12 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
 Vue.http = Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 Vue.use(Element);
+// eslint-disable-next-line no-restricted-globals
+const locale = location.search.replace('?locale=', '');
 /* eslint-disable no-new */
 new Vue({
   i18n: new VueI18n({
-    locale: 'en',
+    locale: locale.match(/^(en|en-US|zh-CN)$/) ? locale : 'en',
     messages,
   }),
   components: { App },
