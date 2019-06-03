@@ -47,7 +47,7 @@
       <el-input v-model="form.user" :placeholder="$t('ui.account_name')"></el-input>
     </el-form-item>
     <el-form-item :label="$t('ui.password')" prop="password">
-      <el-input v-model="form.password" type="password" :placeholder="$t('ui.password')"></el-input>
+      <el-input v-model="form.password" type="password" :placeholder="$t('ui.input_password')"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit" v-if="!form.id">{{$t('ui.create')}}</el-button>

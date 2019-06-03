@@ -20,7 +20,7 @@ Vue.use(Element);
 /* eslint-disable no-new */
 new Vue({
   i18n: new VueI18n({
-    locale: 'zh-CN',
+    locale: 'en',
     messages,
   }),
   components: { App },

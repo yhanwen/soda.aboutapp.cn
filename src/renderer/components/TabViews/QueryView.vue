@@ -26,7 +26,7 @@
     </div>
     <div class="table-view" :class="{show: currentView=='nodes'}">
       <div class="empty" v-if="!nodesData.length">
-        暂无数据
+        {{$t('ui.empty')}}
       </div>
       <el-table :data="nodesData" border style="width: 100%" v-if="nodesData.length" size="mini" height="100%">
         <el-table-column :prop="field" :label="field" v-for="field in nodeFields" :key="field" sortable>
@@ -35,7 +35,7 @@
     </div>
     <div class="table-view" :class="{show: currentView=='relations'}">
       <div class="empty" v-if="!relationsData.length">
-        暂无数据
+        {{$t('ui.empty')}}
       </div>
       <el-table :data="relationsData" border style="width: 100%" v-if="relationsData.length" size="mini" height="100%">
         <el-table-column :prop="field" :label="field" v-for="field in relationFields" :key="field" sortable>
