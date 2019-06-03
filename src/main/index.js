@@ -37,7 +37,7 @@ function createWindow() {
     transparent: true,
     title: 'Soda',
     alwaysOnTop: true,
-    hasShadow: false,
+    // hasShadow: false,
     maximizable: false,
     minimizable: false,
     resizable: false,

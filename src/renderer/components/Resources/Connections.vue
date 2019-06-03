@@ -3,7 +3,7 @@
   <div class="list" v-if="connections && connections.length">
     <div class="item item-add" @click="handleShowAddForm">
       <i class="status el-icon-folder-add"></i>
-      <span class="name">创建新连接</span>
+      <span class="name">{{$t('ui.create_connection')}}</span>
     </div>
     <div
       class="item"
@@ -18,8 +18,8 @@
         <span class="name">{{item.name}}</span>
       </div>
       <div class="actions">
-        <span class="el-icon-edit-outline edit" @click.stop="handleEditItem(item)" title="编辑"></span>
-        <span class="el-icon-delete delete" @click.stop="handleDeleteItem(item)" title="删除"></span>
+        <span class="el-icon-edit-outline edit" @click.stop="handleEditItem(item)" :title="$t('ui.edit')"></span>
+        <span class="el-icon-delete delete" @click.stop="handleDeleteItem(item)" :title="$t('ui.delete')"></span>
       </div>
     </div>
   </div>
@@ -37,23 +37,23 @@
     size="mini"
     :rules="rules"
     :class="{show: showAddForm}">
-    <el-form-item label="主机" prop="host">
-      <el-input v-model="form.host" placeholder="主机IP"></el-input>
+    <el-form-item :label="$t('ui.host')" prop="host">
+      <el-input v-model="form.host" :placeholder="$t('ui.host_ip')"></el-input>
     </el-form-item>
-    <el-form-item label="端口" prop="port">
-      <el-input v-model="form.port" placeholder="主机端口"></el-input>
+    <el-form-item :label="$t('ui.port')" prop="port">
+      <el-input v-model="form.port" :placeholder="$t('ui.port_value')"></el-input>
     </el-form-item>
-    <el-form-item label="账号" prop="user">
-      <el-input v-model="form.user" placeholder="用户名"></el-input>
+    <el-form-item :label="$t('ui.account')" prop="user">
+      <el-input v-model="form.user" :placeholder="$t('ui.account_name')"></el-input>
     </el-form-item>
-    <el-form-item label="密码" prop="password">
-      <el-input v-model="form.password" type="password" placeholder="密码"></el-input>
+    <el-form-item :label="$t('ui.password')" prop="password">
+      <el-input v-model="form.password" type="password" :placeholder="$t('ui.password')"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit" v-if="!form.id">创建</el-button>
-      <el-button type="primary" @click="onSubmit" v-if="form.id">修改</el-button>
-      <el-button @click="hideAddForm">取消</el-button>
-      <el-button @click="handleTestConnection" type="text">测试连接</el-button>
+      <el-button type="primary" @click="onSubmit" v-if="!form.id">{{$t('ui.create')}}</el-button>
+      <el-button type="primary" @click="onSubmit" v-if="form.id">{{$t('ui.change')}}</el-button>
+      <el-button @click="hideAddForm">{{$t('ui.cancel')}}</el-button>
+      <el-button @click="handleTestConnection" type="text">{{$t('ui.test_connection')}}</el-button>
     </el-form-item>
   </el-form>
 </div>
@@ -72,22 +72,22 @@ export default {
       rules: {
         host: [{
           required: true,
-          message: '请输入主机地址',
+          message: this.$t('message.input_host'),
           trigger: 'submit',
         }],
         port: [{
           required: true,
-          message: '请输入端口',
+          message: this.$t('message.input_port'),
           trigger: 'submit',
         }],
         user: [{
           required: true,
-          message: '请输入用户名',
+          message: this.$t('message.input_account'),
           trigger: 'submit',
         }],
         password: [{
           required: true,
-          message: '请输入密码',
+          message: this.$t('message.input_password'),
           trigger: 'submit',
         }],
       },
@@ -101,6 +101,10 @@ export default {
   },
   created() {
     this.resetAllConnections();
+    this.openNewTab({
+      title: this.$t('ui.welcome'),
+      component: 'welcome',
+    });
   },
   computed: {
     ...mapState('Connections', {
@@ -110,20 +114,17 @@ export default {
   },
   watch: {
     connecting(newVal, oldVal) {
-      // if (newVal === 1) {
-      //   this.$message.info('正在连接中...');
-      // }
       if (newVal === 0 && oldVal === 1) {
         this.$notify({
-          title: '成功',
-          message: '连接成功',
+          title: this.$t('ui.success'),
+          message: this.$t('message.success_connect'),
           type: 'success',
         });
       }
       if (newVal === 2 && oldVal === 1) {
         this.$notify({
-          title: '失败',
-          message: '连接失败',
+          title: this.$t('ui.fail'),
+          message: this.$t('message.fail_connect'),
           type: 'error',
         });
       }
@@ -137,6 +138,9 @@ export default {
       'deleteConnection',
       'activeConnection',
       'resetAllConnections',
+    ]),
+    ...mapActions('Tabs', [
+      'openNewTab',
     ]),
     resetForm() {
       this.$refs.form.clearValidate();
@@ -176,22 +180,22 @@ export default {
       this.showAddForm = true;
     },
     handleDeleteItem(item) {
-      this.$confirm('此操作将永久删除该连接, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm(this.$t('message.confirm_delete_connection'), this.$t('ui.tip'), {
+        confirmButtonText: this.$t('ui.confirm'),
+        cancelButtonText: this.$t('ui.cancel'),
         type: 'warning',
         center: true,
       }).then(() => {
         this.deleteConnection(item);
         this.$notify({
-          title: '成功',
-          message: '删除成功',
+          title: this.$t('ui.success'),
+          message: this.$t('message.success_test'),
           type: 'success',
         });
       }).catch(() => {
         this.$notify({
-          title: '信息',
-          message: '已取消删除',
+          title: this.$t('ui.info'),
+          message: this.$t('message.cancel_delete'),
           type: 'info',
         });
       });
@@ -203,13 +207,13 @@ export default {
           const fail = await testConnection(this.form);
           if (fail) {
             this.$notify.error({
-              title: '错误',
+              title: this.$t('ui.error'),
               message: `${fail}`,
             });
           } else {
             this.$notify.success({
-              title: '成功',
-              message: '连接测试成功',
+              title: this.$t('ui.success'),
+              message: this.$t('message.success_test'),
             });
           }
         } else {

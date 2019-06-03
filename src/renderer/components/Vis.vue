@@ -5,19 +5,19 @@
       <el-popover v-for="tag in labels" :key="tag" placement="bottom" width="210" trigger="click">
         <div class="vis-node-style-editor">
           <section>
-            <span class="label">颜色</span>
+            <span class="label">{{$t('ui.color')}}</span>
             <div class="options">
               <span class="color-option" :style="{backgroundColor: color}" :class="labelStyles[tag].color === color ? 'active' : ''" v-for="color in colorOptions" :title="color" @click="setLabelStyleWrapper({label: tag, color})" :key="color"></span>
             </div>
           </section>
           <section>
-            <span class="label">尺寸</span>
+            <span class="label">{{$t('ui.size')}}</span>
             <div class="options sizes">
               <span class="size-option" :style="{zoom: size}" :class="labelStyles[tag].size === size ? 'active' : ''" v-for="size in sizeOptions" :title="size" @click="setLabelStyleWrapper({label: tag, size})" :key="size"></span>
             </div>
           </section>
           <section>
-            <span class="label">显示属性</span>
+            <span class="label">{{$t('ui.display_field')}}</span>
             <div class="options props">
               <span class="prop-option" :class="labelStyles[tag].prop === prop ? 'active' : ''" v-for="prop in propOptions[tag]" :title="prop" @click="setLabelStyleWrapper({label: tag, prop})" :key="prop">&lt; {{prop}} &gt;</span>
             </div>
@@ -38,14 +38,14 @@
           {{hoverNodeItem.label}}
         </div>
         <div class="model" v-if="hoverNodeItem.type">
-          <span class="label">类型:</span>
+          <span class="label">{{$t('ui.type')}}:</span>
           <span class="val">{{hoverNodeItem.type}}</span>
         </div>
         <div class="props" v-if="hoverProps.length">
           <el-table :data="hoverProps" max-height="400" border style="width: 100%" size="mini">
-            <el-table-column prop="field" label="字段" width="100">
+            <el-table-column prop="field" :label="$t('ui.field')" width="100">
             </el-table-column>
-            <el-table-column prop="value" label="值" width="200">
+            <el-table-column prop="value" :label="$t('ui.value')" width="200">
             </el-table-column>
           </el-table>
         </div>

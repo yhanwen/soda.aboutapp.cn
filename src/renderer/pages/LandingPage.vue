@@ -12,7 +12,7 @@
 <script>
 import TabView from '../components/TabView';
 import ResourceManager from '../components/ResourceManager';
-import AutoRun from '../../../test/scripts/autorun';
+// import AutoRun from '../../../test/scripts/autorun';
 export default {
   name: 'landing-page',
   components: {
@@ -25,7 +25,7 @@ export default {
   async mounted() {
     if (process.env.NODE_ENV === 'development') {
       // 开发环境启动自动执行的脚本
-      AutoRun.open218Schema(this);
+      // AutoRun.open218Schema(this);
       // AutoRun.openLabel(this);
       // AutoRun.openEditor(this);
     }

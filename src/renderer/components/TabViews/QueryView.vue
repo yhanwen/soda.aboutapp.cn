@@ -3,22 +3,21 @@
   <div class="input-wrapper">
     <div class="input" v-if="!isFold">
       <cypher-editor :value="cypherText" @change="setCypherText" :db-schema="dbSchema" />
-      <!-- <el-input type="textarea" v-model="cypherText" placeholder="请输入cypher..."></el-input> -->
     </div>
     <div class="actions">
       <div class="button-wrap">
-        <el-button class="button" type="primary" size="mini" v-if="!isFold" @click="runCypher">执行</el-button>
+        <el-button class="button" type="primary" size="mini" v-if="!isFold" @click="runCypher">{{$t('ui.excute')}}</el-button>
         <div class="info" :class="[info.type]">{{info.message}}</div>
       </div>
       <div class="view-switch">
         <el-radio-group v-model="currentView" size="mini">
-          <el-radio-button label="graph">图形</el-radio-button>
-          <el-radio-button label="nodes" >节点</el-radio-button>
-          <el-radio-button label="relations">关系</el-radio-button>
+          <el-radio-button label="graph">{{$t('ui.graph')}}</el-radio-button>
+          <el-radio-button label="nodes">{{$t('ui.nodes')}}</el-radio-button>
+          <el-radio-button label="relations">{{$t('ui.relations')}}</el-radio-button>
         </el-radio-group>
       </div>
-      <div class="fold el-icon-arrow-up" v-if="!isFold" @click="fold()">收起</div>
-      <div class="fold el-icon-arrow-down" v-else @click="unfold()">展开</div>
+      <div class="fold el-icon-arrow-up" v-if="!isFold" @click="fold()">{{$t('ui.fold')}}</div>
+      <div class="fold el-icon-arrow-down" v-else @click="unfold()">{{$t('ui.unfold')}}</div>
     </div>
   </div>
   <div class="view-wrapper" v-loading="loading">
@@ -69,7 +68,7 @@ export default {
       cypherText: '',
       info: {
         type: 'normal',
-        message: '未执行',
+        message: this.$t('message.not_excute'),
       },
       isFold: false,
       loading: false,
@@ -144,11 +143,11 @@ export default {
     },
     async runCypher() {
       if (!this.cypherText.trim()) {
-        alert('请输入Cypher');
+        alert(this.$t('message.please_input_cypher'));
         return;
       }
-      if (this.cypherText.toLowerCase().match(/(create|delete|set|merge)\s/)) {
-        alert('目前只支持查询');
+      if (this.cypherText.toLowerCase().match(/(create|delete|set|merge)(\s|$)/)) {
+        alert(this.$t('message.support_query_only'));
         return;
       }
       this.loading = true;
@@ -156,7 +155,7 @@ export default {
       this.$refs.vis.setDataSet(res);
       this.data = Object.assign({}, res);
       this.info = {
-        message: '执行成功',
+        message: this.$t('message.success_excute'),
         type: 'success',
       };
       this.currentView = 'graph';

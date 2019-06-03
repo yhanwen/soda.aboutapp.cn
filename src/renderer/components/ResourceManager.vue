@@ -1,14 +1,14 @@
 <template>
 <div class="resource-manager-wrapper">
-  <div class="head-title">资源管理器</div>
+  <div class="head-title">{{$t('ui.resource_manager')}}</div>
   <el-collapse v-model="activeNames">
-    <el-collapse-item title="连接管理" name="1">
+    <el-collapse-item :title="$t('ui.connection_manager')" name="1">
       <connections />
     </el-collapse-item>
-    <el-collapse-item title="Node Labels" name="2">
+    <el-collapse-item :title="$t('ui.node_labels')" name="2">
       <node-labels />
     </el-collapse-item>
-    <el-collapse-item title="Relation Types" name="3">
+    <el-collapse-item :title="$t('ui.relation_types')" name="3">
       <relation-types />
     </el-collapse-item>
   </el-collapse>

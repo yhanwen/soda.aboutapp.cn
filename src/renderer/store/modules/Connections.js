@@ -29,6 +29,7 @@ const mutations = {
         c.status = 'disconnected';
       }
     });
+    state.currentConnection = null;
     state.nodeLabels = [];
     state.relationTypes = [];
     state.propertyKeys = [];

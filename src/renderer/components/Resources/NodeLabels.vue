@@ -6,10 +6,10 @@
     </span>
   </div>
   <div class="empty" v-else-if="loadingLabels">
-    加载中...
+    {{$t('ui.loading')}}...
   </div>
   <div class="empty" v-else>
-    暂无数据
+    {{$t('ui.empty')}}
   </div>
 </div>
 </template>

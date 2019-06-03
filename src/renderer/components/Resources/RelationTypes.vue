@@ -4,10 +4,10 @@
     <span class='tag' v-for="label in relationTypes" :key="label.type" @click="showTypeGraph(label.type)">{{label.type}} <em v-if="label.count">({{label.count}})</em></span>
   </div>
   <div class="empty" v-else-if="loadingTypes">
-    加载中...
+    {{$t('ui.loading')}}...
   </div>
   <div class="empty" v-else>
-    暂无数据
+    {{$t('ui.empty')}}
   </div>
 </div>
 </template>

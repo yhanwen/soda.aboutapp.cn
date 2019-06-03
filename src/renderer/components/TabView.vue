@@ -1,11 +1,11 @@
 <template>
 <div class="app-tab-wrapper">
+  <el-button class="add-btn" type="text" icon="el-icon-plus" @click="handleAddTab" v-if="activeGroup!=='welcome'">{{$t('ui.add_query')}}</el-button>
   <el-tabs
     class="app-tab-view"
     :value="editableTabsValue"
     type="border-card"
-    :editable="closable"
-    @tab-add="handleAddTab"
+    :closable="closable"
     @tab-click="handleSwitchTab"
     @tab-remove="handleCloseTab">
     <el-tab-pane :key="item.name" v-for="(item) in editableTabs" :label="item.title" :name="item.name">
@@ -40,6 +40,7 @@ export default {
   },
   computed: {
     ...mapState('Tabs', {
+      activeGroup: state => state.activeGroup,
       editableTabs: (state) => {
         const group = state.groups[state.activeGroup];
         return group.tabs;
@@ -83,7 +84,7 @@ export default {
     },
     handleAddTab() {
       this.openNewTab({
-        title: 'New Query',
+        title: this.$t('ui.add_query'),
         component: 'query',
         props: {
           cypher: '',
@@ -107,6 +108,12 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  .add-btn {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    z-index: 100;
+  }
   .app-tab-view {
     &.el-tabs--border-card {
       background: none;
@@ -119,20 +126,6 @@ export default {
         overflow-x: auto;
         background-color: lighten(@gray-dark, 3);
         border-bottom: 0;
-        .el-tabs__new-tab {
-          margin: 5px 10px 9px 10px;
-          width: auto;
-          padding: 4px 10px;
-          border: 0;
-          color: @gray-light;
-          &:after {
-            content: '创建查询';
-            display: inline;
-          }
-          &:hover {
-            color: @white;
-          }
-        }
         .el-tabs__item {
           padding-right: 27px !important;
           padding-left: 15px !important;

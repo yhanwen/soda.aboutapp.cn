@@ -51,15 +51,6 @@ export default {
   },
   methods: {
     ...mapActions('Tabs', ['openNewTab']),
-    handleOpenTab() {
-      this.openNewTab({
-        title: '欢迎使用1',
-        component: 'welcome',
-        props: {
-          date: +new Date(),
-        },
-      });
-    },
   },
 };
 </script>

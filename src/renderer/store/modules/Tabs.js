@@ -4,10 +4,7 @@ const uuidv1 = require('uuid/v1');
 const state = {
   groups: {
     welcome: {
-      tabs: [{
-        title: '欢迎使用',
-        name: 'welcome',
-      }],
+      tabs: [],
       active: 'welcome',
     },
   },
@@ -70,6 +67,7 @@ const mutations = {
     delete state.groups[id];
   },
   CLEARGROUP(state) {
+    state.groups.welcome.tabs = [];
     Vue.set(state, 'groups', {
       welcome: state.groups.welcome,
     });

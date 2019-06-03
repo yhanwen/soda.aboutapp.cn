@@ -38,7 +38,7 @@ export default {
 @import './assets/styles/mixins.less';
 body {
   -webkit-touch-callout: none;
-  -webkit-user-select: none;  /*webkit浏览器*/
+  -webkit-user-select: none;
   user-select: none;
 }
 /* CSS */
