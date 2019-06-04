@@ -32,6 +32,7 @@
   </div>
   <div class="graph-wrapper">
     <div class="vis-container" ref="container"></div>
+    <div class="tool-box" :class="{show: true}" v-if="toolbox"><tool-box :value="toolBoxAction" @change="toolBoxAction=$event" @action="handleToolBoxAction"/></div>
     <div class="add-ons-pop-tip" :class="{show: hoverNodeItem && !dragging}">
       <div class="wrapper" v-if="hoverNodeItem">
         <div class="name">
@@ -65,9 +66,13 @@ import {
   mapActions,
 } from 'vuex';
 import { clearTimeout, setTimeout } from 'timers';
+import ToolBox from './Vis/ToolBox';
 // let networkInst = null;
 export default {
   props: {
+    toolbox: {
+      default: false,
+    },
     options: {
       default() {
         return {
@@ -75,7 +80,7 @@ export default {
             hover: true,
           },
           manipulation: {
-            enabled: true,
+            enabled: false,
           },
           physics: {
             barnesHut: {
@@ -118,8 +123,10 @@ export default {
       edges: [],
       hoverNodeItem: null,
       dragging: false,
+      toolBoxAction: null,
     };
   },
+  components: { ToolBox },
   async mounted() {
     this.initNetwork();
   },
@@ -173,11 +180,66 @@ export default {
   watch: {},
   methods: {
     ...mapActions('Vis', ['syncLabels', 'setLabelStyle']),
+    handleToolBoxAction(action) {
+      this.networkInst.disableEditMode();
+      if (action === 'active_new_node') {
+        this.networkInst.addNodeMode();
+      }
+      if (action === 'lock_new_node') {
+        this.networkInst.addNodeMode();
+      }
+      if (action === 'cancel_new_node') {
+        this.networkInst.disableEditMode();
+      }
+      if (action === 'active_new_edge') {
+        this.networkInst.addEdgeMode();
+      }
+      if (action === 'lock_new_edge') {
+        this.networkInst.addEdgeMode();
+      }
+      if (action === 'cancel_new_edge') {
+        this.networkInst.disableEditMode();
+      }
+    },
     initNetwork() {
+      const that = this;
       this.networkInst = new vis.Network(this.$refs.container, {
         nodes: [],
         edges: [],
-      }, this.options);
+      }, {
+        ...this.options,
+        manipulation: {
+          enabled: false,
+          addNode(data, callback) {
+            that.$emit('addNode', {
+              data,
+              callback(...args) {
+                callback(...args);
+                if (that.toolBoxAction !== 'new_node_locked') {
+                  that.toolBoxAction = '';
+                  that.networkInst.disableEditMode();
+                } else {
+                  that.networkInst.addNodeMode();
+                }
+              },
+            });
+          },
+          addEdge(data, callback) {
+            that.$emit('addEdge', {
+              data,
+              callback(...args) {
+                callback(...args);
+                if (that.toolBoxAction !== 'new_edge_locked') {
+                  that.toolBoxAction = '';
+                  that.networkInst.disableEditMode();
+                } else {
+                  that.networkInst.addEdgeMode();
+                }
+              },
+            });
+          },
+        },
+      });
       let timeout = null;
 
       this.networkInst.on('blurNode', () => {
@@ -447,13 +509,16 @@ export default {
   }
 
   .graph-wrapper {
+    flex-grow: 1;
     position: relative;
-    height: 100%;
   }
 
   .vis-container {
-    height: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   .tag {
@@ -490,6 +555,18 @@ export default {
       background: fadeout(@white, 94);
       border: solid 1px fadeout(@white, 40);
       color: fadeout(@white, 0);
+    }
+  }
+  .tool-box {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    visibility: hidden;
+    transition: all 0.4s;
+    opacity: 0;
+    &.show {
+      visibility: visible;
+      opacity: 1;
     }
   }
   .add-ons-pop-tip {

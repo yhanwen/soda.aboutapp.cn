@@ -22,7 +22,7 @@
   </div>
   <div class="view-wrapper" v-loading="loading">
     <div class="graph" :class="{show: currentView=='graph'}">
-      <vis ref="vis" />
+      <vis ref="vis" :toolbox="true" />
     </div>
     <div class="table-view" :class="{show: currentView=='nodes'}">
       <div class="empty" v-if="!nodesData.length">
