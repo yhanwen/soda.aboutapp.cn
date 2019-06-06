@@ -12,6 +12,14 @@ const Session = class {
     this.relationTypes = [];
     this.propertyKeys = [];
   }
+  async createNode(node) {
+    const props = Object.keys(node.properties).map(key => `${key} : ${JSON.stringify(node.properties[key])}`);
+    const { nodes } = await this.getGraphByCypher(`CREATE (n:${node.labels.join(':')} { ${props} }) RETURN n`);
+    return {
+      ...node,
+      ...nodes[0],
+    };
+  }
   async getAllNodeLabels(refresh) {
     if (!refresh && this.nodeLabels.length) {
       return this.nodeLabels;

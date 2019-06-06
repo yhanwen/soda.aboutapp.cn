@@ -36,14 +36,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -60,8 +77,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -156,14 +187,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -180,8 +228,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -243,13 +305,13 @@
     position: absolute;
     left: 4px;
     height: 100%;
-    border-left: 2px solid #E4E7ED; }
+    border-left: 2px solid #444; }
   .el-timeline-item__icon {
     color: #FFFFFF;
     font-size: 12px; }
   .el-timeline-item__node {
     position: absolute;
-    background-color: #E4E7ED;
+    background-color: #444;
     border-radius: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -277,7 +339,7 @@
     .el-timeline-item__node--danger {
       background-color: #F56C6C; }
     .el-timeline-item__node--info {
-      background-color: #909399; }
+      background-color: #aaa; }
   .el-timeline-item__dot {
     position: absolute;
     display: -webkit-box;
@@ -290,9 +352,9 @@
     -ms-flex-align: center;
     align-items: center; }
   .el-timeline-item__content {
-    color: #303133; }
+    color: #eee; }
   .el-timeline-item__timestamp {
-    color: #909399;
+    color: #aaa;
     line-height: 1;
     font-size: 12px; }
     .el-timeline-item__timestamp.is-top {

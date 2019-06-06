@@ -36,14 +36,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -60,8 +77,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -156,14 +187,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -180,8 +228,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -268,14 +330,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -292,8 +371,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -483,7 +576,7 @@
       line-height: 60px;
       margin: 0;
       border-bottom: 2px solid transparent;
-      color: #909399; }
+      color: #aaa; }
       .el-menu--horizontal > .el-menu-item a,
       .el-menu--horizontal > .el-menu-item a:hover {
         color: inherit; }
@@ -494,15 +587,15 @@
       .el-menu--horizontal > .el-submenu:focus, .el-menu--horizontal > .el-submenu:hover {
         outline: none; }
         .el-menu--horizontal > .el-submenu:focus .el-submenu__title, .el-menu--horizontal > .el-submenu:hover .el-submenu__title {
-          color: #303133; }
+          color: #eee; }
       .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
         border-bottom: 2px solid #277c41;
-        color: #303133; }
+        color: #eee; }
       .el-menu--horizontal > .el-submenu .el-submenu__title {
         height: 60px;
         line-height: 60px;
         border-bottom: 2px solid transparent;
-        color: #909399; }
+        color: #aaa; }
         .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
           background-color: #fff; }
       .el-menu--horizontal > .el-submenu .el-submenu__icon-arrow {
@@ -517,17 +610,17 @@
       height: 36px;
       line-height: 36px;
       padding: 0 10px;
-      color: #909399; }
+      color: #aaa; }
     .el-menu--horizontal .el-menu .el-menu-item.is-active,
     .el-menu--horizontal .el-menu .el-submenu.is-active > .el-submenu__title {
-      color: #303133; }
+      color: #eee; }
     .el-menu--horizontal .el-menu-item:not(.is-disabled):hover,
     .el-menu--horizontal .el-menu-item:not(.is-disabled):focus {
       outline: none;
-      color: #303133; }
+      color: #eee; }
     .el-menu--horizontal > .el-menu-item.is-active {
       border-bottom: 2px solid #277c41;
-      color: #303133; }
+      color: #eee; }
   .el-menu--collapse {
     width: 64px; }
     .el-menu--collapse > .el-menu-item [class^="el-icon-"],
@@ -558,7 +651,7 @@
         top: 0;
         left: 100%;
         z-index: 10;
-        border: 1px solid #E4E7ED;
+        border: 1px solid #444;
         border-radius: 0px;
         -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); }
@@ -583,7 +676,7 @@
   height: 56px;
   line-height: 56px;
   font-size: 12px;
-  color: #303133;
+  color: #eee;
   padding: 0 20px;
   list-style: none;
   cursor: pointer;
@@ -596,7 +689,7 @@
   .el-menu-item * {
     vertical-align: middle; }
   .el-menu-item i {
-    color: #909399; }
+    color: #aaa; }
   .el-menu-item:hover, .el-menu-item:focus {
     outline: none;
     background-color: #e9f2ec; }
@@ -623,7 +716,7 @@
     height: 56px;
     line-height: 56px;
     font-size: 12px;
-    color: #303133;
+    color: #eee;
     padding: 0 20px;
     list-style: none;
     cursor: pointer;
@@ -636,7 +729,7 @@
     .el-submenu__title * {
       vertical-align: middle; }
     .el-submenu__title i {
-      color: #909399; }
+      color: #aaa; }
     .el-submenu__title:hover, .el-submenu__title:focus {
       outline: none;
       background-color: #e9f2ec; }
@@ -687,7 +780,7 @@
   padding: 7px 0 7px 20px;
   line-height: normal;
   font-size: 12px;
-  color: #909399; }
+  color: #aaa; }
 
 .horizontal-collapse-transition .el-submenu__title .el-submenu__icon-arrow {
   -webkit-transition: .2s;

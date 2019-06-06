@@ -36,14 +36,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -60,8 +77,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -156,14 +187,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -180,8 +228,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -268,14 +330,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -292,8 +371,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -461,8 +554,8 @@
   transition: opacity 0.3s cubic-bezier(0.55, 0, 0.1, 1); }
 
 .el-collapse {
-  border-top: 1px solid #EBEEF5;
-  border-bottom: 1px solid #EBEEF5; }
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333; }
 
 .el-collapse-item.is-disabled .el-collapse-item__header {
   color: #bbb;
@@ -478,9 +571,9 @@
   height: 48px;
   line-height: 48px;
   background-color: #FFFFFF;
-  color: #303133;
+  color: #eee;
   cursor: pointer;
-  border-bottom: 1px solid #EBEEF5;
+  border-bottom: 1px solid #333;
   font-size: 13px;
   font-weight: 500;
   -webkit-transition: border-bottom-color .3s;
@@ -507,12 +600,12 @@
   overflow: hidden;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-bottom: 1px solid #EBEEF5; }
+  border-bottom: 1px solid #333; }
 
 .el-collapse-item__content {
   padding-bottom: 25px;
   font-size: 13px;
-  color: #303133;
+  color: #eee;
   line-height: 1.769230769230769; }
 
 .el-collapse-item:last-child {

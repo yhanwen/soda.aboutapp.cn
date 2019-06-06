@@ -36,14 +36,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -60,8 +77,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -156,14 +187,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -180,8 +228,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -250,7 +312,7 @@
     color: #fff;
     background-color: #222;
     background-image: none;
-    border: 1px solid #222;
+    border: 1px solid #333;
     border-radius: 0px;
     -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
@@ -268,7 +330,7 @@
       outline: none;
       border-color: #277c41; }
   .el-textarea .el-input__count {
-    color: #909399;
+    color: #aaa;
     background: #FFFFFF;
     position: absolute;
     font-size: 12px;
@@ -276,7 +338,7 @@
     right: 10px; }
   .el-textarea.is-disabled .el-textarea__inner {
     background-color: #F5F7FA;
-    border-color: #E4E7ED;
+    border-color: #444;
     color: #666;
     cursor: not-allowed; }
     .el-textarea.is-disabled .el-textarea__inner::-webkit-input-placeholder {
@@ -321,7 +383,7 @@
     -webkit-transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
     .el-input .el-input__clear:hover {
-      color: #909399; }
+      color: #aaa; }
   .el-input .el-input__count {
     height: 100%;
     display: -webkit-inline-box;
@@ -330,7 +392,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    color: #909399;
+    color: #aaa;
     font-size: 12px; }
     .el-input .el-input__count .el-input__count-inner {
       background: #FFFFFF;
@@ -341,7 +403,7 @@
     background-color: #222;
     background-image: none;
     border-radius: 0px;
-    border: 1px solid #222;
+    border: 1px solid #333;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: #fff;
@@ -408,7 +470,7 @@
     border-color: #277c41; }
   .el-input.is-disabled .el-input__inner {
     background-color: #F5F7FA;
-    border-color: #E4E7ED;
+    border-color: #444;
     color: #666;
     cursor: not-allowed; }
     .el-input.is-disabled .el-input__inner::-webkit-input-placeholder {
@@ -462,11 +524,11 @@
     display: table-cell; }
   .el-input-group__append, .el-input-group__prepend {
     background-color: #F5F7FA;
-    color: #909399;
+    color: #aaa;
     vertical-align: middle;
     display: table-cell;
     position: relative;
-    border: 1px solid #222;
+    border: 1px solid #333;
     border-radius: 0px;
     padding: 0 20px;
     width: 1px;

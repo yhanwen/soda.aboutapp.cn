@@ -94,6 +94,11 @@ export default {
           },
           nodes: {
             shape: 'dot',
+            // chosen: {
+            //   node: {
+
+            //   },
+            // },
             font: {
               color: '#fff',
               strokeWidth: 2,
@@ -166,15 +171,18 @@ export default {
       });
       return result;
     },
-    labels() {
-      let result = [];
-      this.nodes.forEach((n) => {
-        if (n.labels) {
-          result.push(n.labels.join('+'));
-        }
-      });
-      result = _.uniq(result);
-      return result;
+    labels: {
+      cache: false,
+      get() {
+        let result = [];
+        this.nodes.forEach((n) => {
+          if (n.labels) {
+            result.push(n.labels.join('+'));
+          }
+        });
+        result = _.uniq(result);
+        return result;
+      },
     },
   },
   watch: {},
@@ -215,6 +223,7 @@ export default {
               data,
               callback(...args) {
                 callback(...args);
+                that.refreshStyle();
                 if (that.toolBoxAction !== 'new_node_locked') {
                   that.toolBoxAction = '';
                   that.networkInst.disableEditMode();
@@ -311,12 +320,26 @@ export default {
           const node = this.nodes.get(n);
           this.nodes.update({
             ...node,
-            physics: false,
+            x: undefined,
+            y: undefined,
+            physics: true,
           });
         });
         this.dragging = true;
       });
-      this.networkInst.on('dragEnd', () => {
+      this.networkInst.on('dragEnd', (event) => {
+        const {
+          nodes = [],
+        } = event;
+        nodes.forEach((n) => {
+          const node = this.nodes.get(n);
+          this.nodes.update({
+            ...node,
+            x: undefined,
+            y: undefined,
+            physics: false,
+          });
+        });
         this.dragging = false;
       });
       this.networkInst.on('doubleClick', (event) => {
@@ -337,6 +360,10 @@ export default {
       this.refreshStyle();
     },
     refreshStyle() {
+      this.syncLabels({
+        labels: this.labels,
+        nodes: this.nodes,
+      });
       this.nodes.forEach((n) => {
         if (!n.labels) {
           return;

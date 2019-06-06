@@ -36,14 +36,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -60,8 +77,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -158,14 +189,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -182,8 +230,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -278,14 +340,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -302,8 +381,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -392,14 +485,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -416,8 +526,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -512,14 +636,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -536,8 +677,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -606,7 +761,7 @@
     color: #fff;
     background-color: #222;
     background-image: none;
-    border: 1px solid #222;
+    border: 1px solid #333;
     border-radius: 0px;
     -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
@@ -624,7 +779,7 @@
       outline: none;
       border-color: #277c41; }
   .el-textarea .el-input__count {
-    color: #909399;
+    color: #aaa;
     background: #FFFFFF;
     position: absolute;
     font-size: 12px;
@@ -632,7 +787,7 @@
     right: 10px; }
   .el-textarea.is-disabled .el-textarea__inner {
     background-color: #F5F7FA;
-    border-color: #E4E7ED;
+    border-color: #444;
     color: #666;
     cursor: not-allowed; }
     .el-textarea.is-disabled .el-textarea__inner::-webkit-input-placeholder {
@@ -677,7 +832,7 @@
     -webkit-transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
     .el-input .el-input__clear:hover {
-      color: #909399; }
+      color: #aaa; }
   .el-input .el-input__count {
     height: 100%;
     display: -webkit-inline-box;
@@ -686,7 +841,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    color: #909399;
+    color: #aaa;
     font-size: 12px; }
     .el-input .el-input__count .el-input__count-inner {
       background: #FFFFFF;
@@ -697,7 +852,7 @@
     background-color: #222;
     background-image: none;
     border-radius: 0px;
-    border: 1px solid #222;
+    border: 1px solid #333;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: #fff;
@@ -764,7 +919,7 @@
     border-color: #277c41; }
   .el-input.is-disabled .el-input__inner {
     background-color: #F5F7FA;
-    border-color: #E4E7ED;
+    border-color: #444;
     color: #666;
     cursor: not-allowed; }
     .el-input.is-disabled .el-input__inner::-webkit-input-placeholder {
@@ -818,11 +973,11 @@
     display: table-cell; }
   .el-input-group__append, .el-input-group__prepend {
     background-color: #F5F7FA;
-    color: #909399;
+    color: #aaa;
     vertical-align: middle;
     display: table-cell;
     position: relative;
-    border: 1px solid #222;
+    border: 1px solid #333;
     border-radius: 0px;
     padding: 0 20px;
     width: 1px;
@@ -893,7 +1048,7 @@
     height: auto;
     text-align: center;
     background: #F5F7FA;
-    color: #606266;
+    color: #ccc;
     cursor: pointer;
     font-size: 13px; }
     .el-input-number__increase:hover, .el-input-number__decrease:hover {
@@ -906,16 +1061,16 @@
   .el-input-number__increase {
     right: 1px;
     border-radius: 0 0px 0px 0;
-    border-left: 1px solid #222; }
+    border-left: 1px solid #333; }
   .el-input-number__decrease {
     left: 1px;
     border-radius: 0px 0 0 0px;
-    border-right: 1px solid #222; }
+    border-right: 1px solid #333; }
   .el-input-number.is-disabled .el-input-number__increase, .el-input-number.is-disabled .el-input-number__decrease {
-    border-color: #E4E7ED;
-    color: #E4E7ED; }
+    border-color: #444;
+    color: #444; }
     .el-input-number.is-disabled .el-input-number__increase:hover, .el-input-number.is-disabled .el-input-number__decrease:hover {
-      color: #E4E7ED;
+      color: #444;
       cursor: not-allowed; }
   .el-input-number--medium {
     width: 200px;
@@ -964,14 +1119,14 @@
       transform: scale(0.8); }
   .el-input-number.is-controls-right .el-input-number__increase {
     border-radius: 0 0px 0 0;
-    border-bottom: 1px solid #222; }
+    border-bottom: 1px solid #333; }
   .el-input-number.is-controls-right .el-input-number__decrease {
     right: 1px;
     bottom: 1px;
     top: auto;
     left: auto;
     border-right: none;
-    border-left: 1px solid #222;
+    border-left: 1px solid #333;
     border-radius: 0 0 0px 0; }
   .el-input-number.is-controls-right[class*=medium] [class*=increase], .el-input-number.is-controls-right[class*=medium] [class*=decrease] {
     line-height: 17px; }
@@ -1018,14 +1173,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -1042,8 +1214,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -1138,14 +1324,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -1162,8 +1365,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -1243,67 +1460,67 @@
     margin-bottom: 12px; }
   .el-tooltip__popper[x-placement^="top"] .popper__arrow {
     bottom: -6px;
-    border-top-color: #303133;
+    border-top-color: #eee;
     border-bottom-width: 0; }
     .el-tooltip__popper[x-placement^="top"] .popper__arrow::after {
       bottom: 1px;
       margin-left: -5px;
-      border-top-color: #303133;
+      border-top-color: #eee;
       border-bottom-width: 0; }
   .el-tooltip__popper[x-placement^="bottom"] {
     margin-top: 12px; }
   .el-tooltip__popper[x-placement^="bottom"] .popper__arrow {
     top: -6px;
     border-top-width: 0;
-    border-bottom-color: #303133; }
+    border-bottom-color: #eee; }
     .el-tooltip__popper[x-placement^="bottom"] .popper__arrow::after {
       top: 1px;
       margin-left: -5px;
       border-top-width: 0;
-      border-bottom-color: #303133; }
+      border-bottom-color: #eee; }
   .el-tooltip__popper[x-placement^="right"] {
     margin-left: 12px; }
   .el-tooltip__popper[x-placement^="right"] .popper__arrow {
     left: -6px;
-    border-right-color: #303133;
+    border-right-color: #eee;
     border-left-width: 0; }
     .el-tooltip__popper[x-placement^="right"] .popper__arrow::after {
       bottom: -5px;
       left: 1px;
-      border-right-color: #303133;
+      border-right-color: #eee;
       border-left-width: 0; }
   .el-tooltip__popper[x-placement^="left"] {
     margin-right: 12px; }
   .el-tooltip__popper[x-placement^="left"] .popper__arrow {
     right: -6px;
     border-right-width: 0;
-    border-left-color: #303133; }
+    border-left-color: #eee; }
     .el-tooltip__popper[x-placement^="left"] .popper__arrow::after {
       right: 1px;
       bottom: -5px;
       margin-left: -5px;
       border-right-width: 0;
-      border-left-color: #303133; }
+      border-left-color: #eee; }
   .el-tooltip__popper.is-dark {
-    background: #303133;
+    background: #eee;
     color: #FFFFFF; }
   .el-tooltip__popper.is-light {
     background: #FFFFFF;
-    border: 1px solid #303133; }
+    border: 1px solid #eee; }
     .el-tooltip__popper.is-light[x-placement^="top"] .popper__arrow {
-      border-top-color: #303133; }
+      border-top-color: #eee; }
       .el-tooltip__popper.is-light[x-placement^="top"] .popper__arrow::after {
         border-top-color: #FFFFFF; }
     .el-tooltip__popper.is-light[x-placement^="bottom"] .popper__arrow {
-      border-bottom-color: #303133; }
+      border-bottom-color: #eee; }
       .el-tooltip__popper.is-light[x-placement^="bottom"] .popper__arrow::after {
         border-bottom-color: #FFFFFF; }
     .el-tooltip__popper.is-light[x-placement^="left"] .popper__arrow {
-      border-left-color: #303133; }
+      border-left-color: #eee; }
       .el-tooltip__popper.is-light[x-placement^="left"] .popper__arrow::after {
         border-left-color: #FFFFFF; }
     .el-tooltip__popper.is-light[x-placement^="right"] .popper__arrow {
-      border-right-color: #303133; }
+      border-right-color: #eee; }
       .el-tooltip__popper.is-light[x-placement^="right"] .popper__arrow::after {
         border-right-color: #FFFFFF; }
 
@@ -1343,14 +1560,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -1367,8 +1601,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -1431,7 +1679,7 @@
   width: 100%;
   height: 6px;
   margin: 16px 0;
-  background-color: #E4E7ED;
+  background-color: #444;
   border-radius: 3px;
   position: relative;
   cursor: pointer;
@@ -1546,7 +1794,7 @@
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     font-size: 14px;
-    color: #909399;
+    color: #aaa;
     margin-top: 15px; }
 
 .el-slider.is-vertical {
@@ -1584,7 +1832,7 @@
       .el-slider.is-vertical.el-slider--with-input .el-slider__input .el-input-number__increase {
         top: 32px;
         margin-top: -1px;
-        border: 1px solid #222;
+        border: 1px solid #333;
         line-height: 20px;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;

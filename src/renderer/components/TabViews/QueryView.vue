@@ -22,7 +22,7 @@
   </div>
   <div class="view-wrapper" v-loading="loading">
     <div class="graph" :class="{show: currentView=='graph'}">
-      <vis ref="vis" :toolbox="true" />
+      <vis ref="vis" :toolbox="true" @addNode="handleAddNode" />
     </div>
     <div class="table-view" :class="{show: currentView=='nodes'}">
       <div class="empty" v-if="!nodesData.length">
@@ -43,6 +43,7 @@
       </el-table>
     </div>
   </div>
+  <node-editor ref="nodeEditor" />
 </div>
 </template>
 
@@ -52,6 +53,7 @@ import { mapState } from 'vuex';
 import { pool } from '../../services/neo4j';
 import Vis from '../Vis';
 import CypherEditor from '../CypherEditor/index';
+import NodeEditor from '../Dialogs/NodeEditor';
 export default {
   name: 'query-view',
   props: {
@@ -62,6 +64,7 @@ export default {
   components: {
     Vis,
     CypherEditor,
+    NodeEditor,
   },
   data() {
     return {
@@ -85,6 +88,7 @@ export default {
       this.runCypher();
       this.fold();
     }
+    this.nodeEditor = this.$refs.nodeEditor;
   },
   computed: {
     ...mapState('Connections', {
@@ -138,6 +142,9 @@ export default {
     },
   },
   methods: {
+    handleAddNode({ data, callback }) {
+      this.nodeEditor.editNode(data, callback);
+    },
     setCypherText(val) {
       this.cypherText = val;
     },

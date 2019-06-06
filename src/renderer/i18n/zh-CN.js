@@ -14,6 +14,7 @@ module.exports = {
     please_input_cypher: '请输入Cypher',
     support_query_only: '目前只支持查询',
     success_excute: '执行成功',
+    input_node_labels: '请选择节点类型',
   },
   ui: {
     resource_manager: '资源管理器',
@@ -66,5 +67,9 @@ module.exports = {
     click_to_cancel_add: '点击该按钮取消创建',
     click_to_remove_selected: '点击删除选中的边和点',
     click_to_edit_selected: '点击编辑选中的边或点',
+    node_editor: '编辑节点',
+    save: '保存',
+    node_label: '节点名称',
+    action: '操作',
   },
 };

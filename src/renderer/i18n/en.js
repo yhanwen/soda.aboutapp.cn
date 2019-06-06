@@ -14,6 +14,7 @@ module.exports = {
     please_input_cypher: 'Input Cypher',
     support_query_only: 'Only Support Query',
     success_excute: 'Success',
+    input_node_labels: 'Node labels is required',
   },
   ui: {
     resource_manager: 'Resources',
@@ -66,5 +67,9 @@ module.exports = {
     click_to_cancel_add: 'Click this button to cancel creation',
     click_to_remove_selected: 'Click to delete selected edges and points',
     click_to_edit_selected: 'Click to edit selected edges and points',
+    node_editor: 'Node Editor',
+    save: 'Save',
+    node_label: 'Name',
+    action: 'Action',
   },
 };

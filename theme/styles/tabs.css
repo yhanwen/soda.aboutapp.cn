@@ -36,14 +36,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -60,8 +77,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -156,14 +187,31 @@
 -------------------------- */
 /* Select
 -------------------------- */
+.el-select {
+  width: 100%; }
+
+.el-select .el-tag {
+  background: #333; }
+
+.el-select .el-tag__close.el-icon-close {
+  right: -5px;
+  top: -1px; }
+
 /* Alert
 -------------------------- */
 /* MessageBox
 -------------------------- */
+.el-message-box {
+  background: #111;
+  border-color: #222; }
+
 /* Message
 -------------------------- */
 /* Notification
 -------------------------- */
+.el-notification {
+  background: #222; }
+
 /* Input
 -------------------------- */
 /* Cascader
@@ -180,8 +228,22 @@
 -------------------------- */
 /* Dialog
 -------------------------- */
+.el-dialog {
+  border: solid 1px #222; }
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 16px;
+  color: #aaa; }
+
 /* Table
 -------------------------- */
+.el-table {
+  background: #151515; }
+
+.el-table tr {
+  background: #151515; }
+
 /* Pagination
 -------------------------- */
 /* Popover
@@ -281,7 +343,7 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: #E4E7ED;
+    background-color: #444;
     z-index: 1; }
   .el-tabs__nav-wrap.is-scrollable {
     padding: 0 20px;
@@ -296,7 +358,7 @@
   cursor: pointer;
   line-height: 44px;
   font-size: 12px;
-  color: #909399; }
+  color: #aaa; }
 
 .el-tabs__nav-next {
   right: 0; }
@@ -334,7 +396,7 @@
   list-style: none;
   font-size: 14px;
   font-weight: 500;
-  color: #303133;
+  color: #eee;
   position: relative; }
   .el-tabs__item:focus, .el-tabs__item:focus:active {
     outline: none; }
@@ -369,13 +431,13 @@
   position: relative; }
 
 .el-tabs--card > .el-tabs__header {
-  border-bottom: 1px solid #E4E7ED; }
+  border-bottom: 1px solid #444; }
 
 .el-tabs--card > .el-tabs__header .el-tabs__nav-wrap::after {
   content: none; }
 
 .el-tabs--card > .el-tabs__header .el-tabs__nav {
-  border: 1px solid #E4E7ED;
+  border: 1px solid #444;
   border-bottom: none;
   border-radius: 4px 4px 0 0;
   -webkit-box-sizing: border-box;
@@ -399,7 +461,7 @@
 
 .el-tabs--card > .el-tabs__header .el-tabs__item {
   border-bottom: 1px solid transparent;
-  border-left: 1px solid #E4E7ED;
+  border-left: 1px solid #444;
   -webkit-transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
   .el-tabs--card > .el-tabs__header .el-tabs__item:first-child {
@@ -419,14 +481,14 @@
 
 .el-tabs--border-card {
   background: #FFFFFF;
-  border: 1px solid #222;
+  border: 1px solid #555;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04); }
   .el-tabs--border-card > .el-tabs__content {
     padding: 15px; }
   .el-tabs--border-card > .el-tabs__header {
     background-color: #F5F7FA;
-    border-bottom: 1px solid #E4E7ED;
+    border-bottom: 1px solid #444;
     margin: 0; }
   .el-tabs--border-card > .el-tabs__header .el-tabs__nav-wrap::after {
     content: none; }
@@ -435,7 +497,7 @@
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     border: 1px solid transparent;
     margin-top: -1px;
-    color: #909399; }
+    color: #aaa; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item:first-child {
       margin-left: -1px; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item + .el-tabs__item {
@@ -443,8 +505,8 @@
     .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
       color: #277c41;
       background-color: #FFFFFF;
-      border-right-color: #222;
-      border-left-color: #222; }
+      border-right-color: #555;
+      border-left-color: #555; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
       color: #277c41; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-disabled {
@@ -478,7 +540,7 @@
 
 .el-tabs--bottom.el-tabs--border-card .el-tabs__header.is-bottom {
   border-bottom: 0;
-  border-top: 1px solid #222; }
+  border-top: 1px solid #555; }
 
 .el-tabs--bottom.el-tabs--border-card .el-tabs__nav-wrap.is-bottom {
   margin-top: -1px;
@@ -587,16 +649,16 @@
 
 .el-tabs--left.el-tabs--card .el-tabs__item.is-left {
   border-left: none;
-  border-right: 1px solid #E4E7ED;
+  border-right: 1px solid #444;
   border-bottom: none;
-  border-top: 1px solid #E4E7ED; }
+  border-top: 1px solid #444; }
 
 .el-tabs--left.el-tabs--card .el-tabs__item.is-left:first-child {
-  border-right: 1px solid #E4E7ED;
+  border-right: 1px solid #444;
   border-top: none; }
 
 .el-tabs--left.el-tabs--card .el-tabs__item.is-left.is-active {
-  border: 1px solid #E4E7ED;
+  border: 1px solid #444;
   border-right-color: #fff;
   border-left: none;
   border-bottom: none; }
@@ -607,7 +669,7 @@
 
 .el-tabs--left.el-tabs--card .el-tabs__nav {
   border-radius: 4px 0 0 4px;
-  border-bottom: 1px solid #E4E7ED;
+  border-bottom: 1px solid #444;
   border-right: none; }
 
 .el-tabs--left.el-tabs--card .el-tabs__new-tab {
@@ -643,14 +705,14 @@
 
 .el-tabs--right.el-tabs--card .el-tabs__item.is-right {
   border-bottom: none;
-  border-top: 1px solid #E4E7ED; }
+  border-top: 1px solid #444; }
 
 .el-tabs--right.el-tabs--card .el-tabs__item.is-right:first-child {
-  border-left: 1px solid #E4E7ED;
+  border-left: 1px solid #444;
   border-top: none; }
 
 .el-tabs--right.el-tabs--card .el-tabs__item.is-right.is-active {
-  border: 1px solid #E4E7ED;
+  border: 1px solid #444;
   border-left-color: #fff;
   border-right: none;
   border-bottom: none; }
@@ -661,7 +723,7 @@
 
 .el-tabs--right.el-tabs--card .el-tabs__nav {
   border-radius: 0 4px 4px 0;
-  border-bottom: 1px solid #E4E7ED;
+  border-bottom: 1px solid #444;
   border-left: none; }
 
 .el-tabs--right.el-tabs--border-card .el-tabs__header.is-right {
