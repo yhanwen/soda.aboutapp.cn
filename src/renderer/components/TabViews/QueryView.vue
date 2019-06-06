@@ -98,6 +98,7 @@ export default {
     }
     this.nodeEditor = this.$refs.nodeEditor;
     this.edgeEditor = this.$refs.edgeEditor;
+    this.vis = this.$refs.vis;
   },
   computed: {
     ...mapState('Connections', {
@@ -131,23 +132,35 @@ export default {
       });
       return _.uniq(result);
     },
-    nodesData() {
-      const list = this.data.nodes.map(n => ({
-        id: n.id,
-        labels: n.labels.join(','),
-        ...n.properties,
-      }));
-      return list;
+    nodesData: {
+      cache: false,
+      get() {
+        if (!this.vis) {
+          return [];
+        }
+        const list = this.vis.nodes.map(n => ({
+          id: n.id,
+          labels: n.labels.join(','),
+          ...n.properties,
+        }));
+        return list;
+      },
     },
-    relationsData() {
-      const list = this.data.edges.map(n => ({
-        id: n.id,
-        type: n.type,
-        from: n.from,
-        to: n.to,
-        ...n.properties,
-      }));
-      return list;
+    relationsData: {
+      cache: false,
+      get() {
+        if (!this.vis) {
+          return [];
+        }
+        const list = this.vis.edges.map(n => ({
+          id: n.id,
+          type: n.type,
+          from: n.from,
+          to: n.to,
+          ...n.properties,
+        }));
+        return list;
+      },
     },
   },
   methods: {
