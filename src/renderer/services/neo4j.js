@@ -20,6 +20,25 @@ const Session = class {
       ...nodes[0],
     };
   }
+  async updateNode(node, oldLabels) {
+    const props = Object.keys(node.properties).map(key => `${key} : ${JSON.stringify(node.properties[key])}`).join(', ');
+    const removeLabel = oldLabels.length ? `REMOVE n:${oldLabels.join(':')}` : '';
+    const { nodes } = await this.getGraphByCypher(`MATCH (n) WHERE id(n)=${node.id} ${removeLabel} SET n={${props}}, n:${node.labels.join(':')} RETURN n`);
+    return {
+      ...node,
+      ...nodes[0],
+    };
+  }
+  async removeNodes(ids = []) {
+    if (!ids.length) {
+      return {
+        nodes: [],
+        edges: [],
+      };
+    }
+    const res = await this.getGraphByCypher(`MATCH (n)-[r]-() WHERE id(n) IN [${ids.join(',')}] DELETE n, r RETURN n, r`);
+    return res;
+  }
   async createEdge(edge) {
     const props = Object.keys(edge.properties).map(key => `${key} : ${JSON.stringify(edge.properties[key])}`).join(', ');
     const { edges } = await this.getGraphByCypher(`MATCH (m), (n) WHERE id(m)=${edge.from} AND id(n)=${edge.to} CREATE (m)-[e:${edge.type} { ${props} }]->(n) RETURN m, n, e`);
@@ -27,6 +46,24 @@ const Session = class {
       ...edge,
       ...edges[0],
     };
+  }
+  async updateEdge(edge) {
+    const props = Object.keys(edge.properties).map(key => `${key} : ${JSON.stringify(edge.properties[key])}`).join(', ');
+    const { edges } = await this.getGraphByCypher(`MATCH (m)-[r]->(n) where id(r)=${edge.id} delete r create (m)-[r1:${edge.type} { ${props} }]->(n) RETURN r1`);
+    return {
+      oldEdge: edge,
+      newEdge: edges[0],
+    };
+  }
+  async removeEdges(ids = []) {
+    if (!ids.length) {
+      return {
+        nodes: [],
+        edges: [],
+      };
+    }
+    const res = await this.getGraphByCypher(`MATCH ()-[n]->() WHERE id(n) IN [${ids.join(',')}] DELETE n RETURN n`);
+    return res;
   }
   async getAllNodeLabels(refresh) {
     if (!refresh && this.nodeLabels.length) {

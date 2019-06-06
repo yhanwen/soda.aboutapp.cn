@@ -32,7 +32,7 @@
   </div>
   <div class="graph-wrapper">
     <div class="vis-container" ref="container"></div>
-    <div class="tool-box" :class="{show: true}" v-if="toolbox"><tool-box :value="toolBoxAction" @change="toolBoxAction=$event" @action="handleToolBoxAction"/></div>
+    <div class="tool-box" :class="{show: true}" v-if="toolbox"><tool-box :value="toolBoxAction" @change="toolBoxAction=$event" @action="handleToolBoxAction" :selected="selected" /></div>
     <div class="add-ons-pop-tip" :class="{show: hoverNodeItem}">
       <div class="wrapper" v-if="hoverNodeItem">
         <div class="name">
@@ -129,6 +129,7 @@ export default {
       hoverNodeItem: null,
       dragging: false,
       toolBoxAction: null,
+      selected: {},
     };
   },
   components: { ToolBox },
@@ -208,6 +209,54 @@ export default {
       if (action === 'cancel_new_edge') {
         this.networkInst.disableEditMode();
       }
+      if (action === 'edit') {
+        this.handleEdit();
+      }
+      if (action === 'remove') {
+        this.handleRemove();
+      }
+    },
+    handleRemove() {
+      this.$emit('remove', {
+        data: this.selected,
+        callback: () => {
+          const { edges = [], nodes = [] } = this.selected;
+          this.nodes.remove(nodes);
+          this.edges.remove(edges);
+          this.selected = {
+            nodes: [],
+            edges: [],
+          };
+        },
+      });
+    },
+    handleEdit() {
+      const that = this;
+      const { nodes = [], edges = [] } = this.selected;
+      if (nodes.length) {
+        this.$emit('editNode', {
+          data: that.nodes.get(nodes[0]),
+          callback(data) {
+            that.nodes.update(data);
+            that.refreshStyle();
+          },
+        });
+        return;
+      }
+      if (edges.length) {
+        this.$emit('editEdge', {
+          data: that.edges.get(edges[0]),
+          callback({ oldEdge, newEdge }) {
+            newEdge.label = newEdge.type;
+            that.edges.remove(oldEdge);
+            that.edges.add(newEdge);
+            that.selected = {
+              nodes: [],
+              edges: [],
+            };
+          },
+        });
+      }
     },
     initNetwork() {
       const that = this;
@@ -250,6 +299,10 @@ export default {
           },
         },
       });
+      this.setDataSet({
+        nodes: [],
+        edges: [],
+      });
       let timeout = null;
 
       this.networkInst.on('blurNode', () => {
@@ -280,6 +333,11 @@ export default {
         const {
           edges = [], nodes = [],
         } = event;
+        this.selected = {
+          ...this.selected,
+          edges,
+          nodes,
+        };
         if (!edges.length && !nodes.length) {
           this.hoverNodeItem = null;
         }

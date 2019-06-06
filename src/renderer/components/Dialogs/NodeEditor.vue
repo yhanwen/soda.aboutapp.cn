@@ -65,6 +65,7 @@ export default {
       form: {
         properties: {},
       },
+      labels: [],
       propFields: [],
       rules: {
         labels: [{
@@ -120,8 +121,15 @@ export default {
           this.propFields.filter(({ value }) => !!value).forEach(({ value, field }) => {
             this.form.properties[field] = value;
           });
-          const node = await this.session.createNode(this.form);
+          let node = this.form;
+          if (!node.identity) {
+            node = await this.session.createNode(node);
+          } else {
+            node = await this.session.updateNode(node, this.labels);
+          }
+
           this.callback(Object.assign({}, node));
+          this.resetForm();
         } else {
           return false;
         }
@@ -134,6 +142,7 @@ export default {
     editNode(node, callback) {
       this.dialogVisible = true;
       this.callback = callback;
+      this.labels = node.labels.slice(0);
       this.$set(this, 'form', Object.assign({
         labels: [],
         label: '',

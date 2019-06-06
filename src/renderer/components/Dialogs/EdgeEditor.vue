@@ -120,8 +120,14 @@ export default {
           this.propFields.filter(({ value }) => !!value).forEach(({ value, field }) => {
             this.form.properties[field] = value;
           });
-          const edge = await this.session.createEdge(this.form);
+          let edge = this.form;
+          if (!edge.identity) {
+            edge = await this.session.createEdge(edge);
+          } else {
+            edge = await this.session.updateEdge(edge);
+          }
           this.callback(Object.assign({}, edge));
+          this.resetForm();
         } else {
           return false;
         }

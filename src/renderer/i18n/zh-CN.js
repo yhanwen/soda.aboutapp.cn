@@ -16,6 +16,9 @@ module.exports = {
     success_excute: '执行成功',
     input_node_labels: '请选择节点类型',
     input_relation_type: '请选择关系类型',
+    confirm_delete_remote_data: '是否要同时删除远程数据?',
+    success_delete_affect_count: '删除了{{nodesCount}}个节点，{{edgesCount}}条边',
+    success_delete: '删除成功',
   },
   ui: {
     resource_manager: '资源管理器',
@@ -73,5 +76,7 @@ module.exports = {
     save: '保存',
     node_label: '节点名称',
     action: '操作',
+    delete_local_data_only: '只删除本地数据',
+    delete_remote_data: '删除远程数据',
   },
 };

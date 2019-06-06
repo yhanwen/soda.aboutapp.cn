@@ -16,6 +16,9 @@ module.exports = {
     success_excute: 'Success',
     input_node_labels: 'Node labels is required',
     input_relation_type: 'Relation type is required',
+    confirm_delete_remote_data: 'Do you want to delete remote data at the same time?',
+    success_delete_affect_count: 'Delete {{nodesCount}} nodes, {{edgesCount}} edges',
+    success_delete: 'Success Delete',
   },
   ui: {
     resource_manager: 'Resources',
@@ -73,5 +76,7 @@ module.exports = {
     save: 'Save',
     node_label: 'Name',
     action: 'Action',
+    delete_local_data_only: 'Delete Local Data',
+    delete_remote_data: 'Delete Remote Data',
   },
 };

@@ -2,7 +2,7 @@
 <div class="vis-tool-box">
   
   <div class="box-list">
-    <div class="box-item" v-for="item in items" :key="item.action" :class="{active: value===item.action, locked: value===`${item.action}_locked`}" @click="handleClick(item)">
+    <div class="box-item" v-for="item in items" :key="item.action" :class="{active: value===item.action, locked: value===`${item.action}_locked`, disabled: item.disabled}" @click="handleClick(item)">
       <el-popover
         class="toolbox-popover"
         placement="right"
@@ -31,6 +31,7 @@ export default {
     value: {
       default: '',
     },
+    selected: {},
   },
   data() {
     return {
@@ -51,11 +52,13 @@ export default {
           action: 'edit',
           title: this.$t('ui.edit'),
           icon: 'icon-edit',
+          disabled: true,
         },
         {
           action: 'remove',
           title: this.$t('ui.delete'),
           icon: 'icon-remove',
+          disabled: true,
         },
       ],
     };
@@ -66,10 +69,22 @@ export default {
   },
   computed: {
   },
-  watch: {},
+  watch: {
+    selected({ nodes = [], edges = [] }) {
+      this.items.forEach((item) => {
+        const enabled = nodes.length || edges.length;
+        if (item.action === 'remove' || item.action === 'edit') {
+          this.$set(item, 'disabled', !enabled);
+        }
+      });
+    },
+  },
   methods: {
     handleClick(item) {
-      const { action } = item;
+      const { action, disabled } = item;
+      if (disabled) {
+        return;
+      }
       if (!item.allowLock) {
         this.$emit('change', action);
         this.$emit('action', action);
@@ -140,7 +155,7 @@ export default {
     height: @size;
     border-radius: @size;
     background: @gray-dark;
-    border: solid 2px fadeout(@white, 80);
+    border: solid 2px fadeout(@white, 70);
     box-shadow: 0 0 10px fadeout(@black, 50);
     box-sizing: border-box;
     padding-top: 1px;
@@ -149,7 +164,7 @@ export default {
     align-items: center;
     justify-content: space-around;
     text-align: center;
-    color: fadeout(@white, 80);
+    color: fadeout(@white, 70);
     font-size: @size * 0.4;
     transition: all 0.4s;
     cursor: pointer;
@@ -168,6 +183,12 @@ export default {
       background: @gray-darker;
       border-color: fadeout(@white, 50);
       box-shadow: 0 0 20px fadeout(@yellow, 10);
+    }
+    &.disabled {
+      color: fadeout(@white, 90);
+      background: lighten(@gray-dark, 2);
+      border: solid 2px fadeout(@white, 90);
+      cursor: not-allowed;
     }
   }
 }

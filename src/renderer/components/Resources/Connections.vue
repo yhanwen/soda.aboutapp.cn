@@ -189,7 +189,7 @@ export default {
         this.deleteConnection(item);
         this.$notify({
           title: this.$t('ui.success'),
-          message: this.$t('message.success_test'),
+          message: this.$t('message.success_delete'),
           type: 'success',
         });
       }).catch(() => {

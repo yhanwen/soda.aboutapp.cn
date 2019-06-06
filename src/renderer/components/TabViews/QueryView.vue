@@ -22,7 +22,12 @@
   </div>
   <div class="view-wrapper" v-loading="loading">
     <div class="graph" :class="{show: currentView=='graph'}">
-      <vis ref="vis" :toolbox="true" @addNode="handleAddNode" @addEdge="handleAddEdge" />
+      <vis ref="vis" :toolbox="true" 
+        @remove="handleRemove"
+        @editNode="handleEditNode"
+        @editEdge="handleEditEdge" 
+        @addNode="handleAddNode" 
+        @addEdge="handleAddEdge" />
     </div>
     <div class="table-view" :class="{show: currentView=='nodes'}">
       <div class="empty" v-if="!nodesData.length">
@@ -146,11 +151,56 @@ export default {
     },
   },
   methods: {
+    handleEditNode({ data, callback }) {
+      this.nodeEditor.editNode(data, callback);
+    },
+    handleEditEdge({ data, callback }) {
+      this.edgeEditor.editEdge(data, callback);
+    },
     handleAddNode({ data, callback }) {
       this.nodeEditor.editNode(data, callback);
     },
     handleAddEdge({ data, callback }) {
       this.edgeEditor.editEdge(data, callback);
+    },
+    // handleRemove() {},
+    handleRemove({ data: { nodes = [], edges = [] }, callback }) {
+      this.$confirm(this.$t('message.confirm_delete_remote_data'), this.$t('ui.confirm'), {
+        distinguishCancelAndClose: true,
+        confirmButtonText: this.$t('ui.delete_remote_data'),
+        cancelButtonText: this.$t('ui.delete_local_data_only'),
+      })
+        .then(async () => {
+          await this.session.removeNodes(nodes);
+          await this.session.removeEdges(edges);
+          const nodesLen = nodes.length;
+          const edgesLen = edges.length;
+          callback();
+          this.$notify({
+            title: this.$t('ui.success'),
+            message: this.$t('message.success_delete_affect_count')
+              .replace('{{nodesCount}}', nodesLen)
+              .replace('{{edgesCount}}', edgesLen),
+            type: 'success',
+          });
+        })
+        .catch((action) => {
+          if (action === 'cancel') {
+            callback();
+            this.$notify({
+              title: this.$t('ui.success'),
+              message: this.$t('message.success_delete'),
+              type: 'success',
+            });
+          }
+          if (action === 'close') {
+            this.$notify({
+              title: this.$t('ui.info'),
+              message: this.$t('message.cancel_delete'),
+              type: 'info',
+            });
+          }
+        });
     },
     setCypherText(val) {
       this.cypherText = val;
