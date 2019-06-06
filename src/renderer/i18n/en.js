@@ -78,5 +78,6 @@ module.exports = {
     action: 'Action',
     delete_local_data_only: 'Delete Local Data',
     delete_remote_data: 'Delete Remote Data',
+    append_to_graph: 'Append',
   },
 };

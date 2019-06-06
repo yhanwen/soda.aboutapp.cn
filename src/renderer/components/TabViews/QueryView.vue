@@ -6,7 +6,8 @@
     </div>
     <div class="actions">
       <div class="button-wrap">
-        <el-button class="button" type="primary" size="mini" v-if="!isFold" @click="runCypher">{{$t('ui.excute')}}</el-button>
+        <el-button class="button" type="primary" size="mini" v-if="!isFold" @click="runCypher(false)">{{$t('ui.excute')}}</el-button>
+        <el-button class="button" type="default" size="mini" v-if="!isFold && nodesData.length" @click="runCypher(true)">{{$t('ui.append_to_graph')}}</el-button>
         <div class="info" :class="[info.type]">{{info.message}}</div>
       </div>
       <div class="view-switch">
@@ -218,7 +219,7 @@ export default {
     setCypherText(val) {
       this.cypherText = val;
     },
-    async runCypher() {
+    async runCypher(append) {
       if (!this.cypherText.trim()) {
         alert(this.$t('message.please_input_cypher'));
         return;
@@ -229,8 +230,16 @@ export default {
       }
       this.loading = true;
       const res = await this.session.getGraphByCypher(this.cypherText);
-      this.$refs.vis.setDataSet(res);
-      this.data = Object.assign({}, res);
+      if (append) {
+        this.$refs.vis.setDataSet(res, append);
+        this.data = Object.assign({}, {
+          nodes: this.vis.nodes,
+          edges: this.vis.edges,
+        });
+      } else {
+        this.$refs.vis.setDataSet(res);
+        this.data = Object.assign({}, res);
+      }
       this.info = {
         message: this.$t('message.success_excute'),
         type: 'success',
@@ -302,7 +311,7 @@ export default {
       }
 
       .button {
-        margin-right: 15px;
+        margin-right: 10px;
       }
 
       .info {

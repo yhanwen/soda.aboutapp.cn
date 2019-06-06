@@ -78,5 +78,6 @@ module.exports = {
     action: '操作',
     delete_local_data_only: '只删除本地数据',
     delete_remote_data: '删除远程数据',
+    append_to_graph: '添加结果到图上',
   },
 };

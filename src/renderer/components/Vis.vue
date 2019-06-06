@@ -442,8 +442,25 @@ export default {
     setDataSet({
       nodes,
       edges,
-    }) {
-      this.nodes = new vis.DataSet(nodes);
+    }, append) {
+      if (append) {
+        nodes.forEach((n) => {
+          if (!this.nodes.get(n.id)) {
+            this.nodes.add(n);
+          }
+        });
+        edges.forEach((n) => {
+          if (!this.edges.get(n.id)) {
+            this.edges.add(n);
+          }
+        });
+      } else {
+        this.edges = new vis.DataSet(edges.map(edge => ({
+          ...edge,
+          label: edge.type,
+        })));
+        this.nodes = new vis.DataSet(nodes);
+      }
       this.syncLabels({
         labels: this.labels,
         nodes,
@@ -463,10 +480,6 @@ export default {
         this.nodes.update(n);
       });
 
-      this.edges = new vis.DataSet(edges.map(edge => ({
-        ...edge,
-        label: edge.type,
-      })));
       this.networkInst.setData({
         nodes: this.nodes,
         edges: this.edges,
