@@ -13,11 +13,19 @@ const Session = class {
     this.propertyKeys = [];
   }
   async createNode(node) {
-    const props = Object.keys(node.properties).map(key => `${key} : ${JSON.stringify(node.properties[key])}`);
+    const props = Object.keys(node.properties).map(key => `${key} : ${JSON.stringify(node.properties[key])}`).join(', ');
     const { nodes } = await this.getGraphByCypher(`CREATE (n:${node.labels.join(':')} { ${props} }) RETURN n`);
     return {
       ...node,
       ...nodes[0],
+    };
+  }
+  async createEdge(edge) {
+    const props = Object.keys(edge.properties).map(key => `${key} : ${JSON.stringify(edge.properties[key])}`).join(', ');
+    const { edges } = await this.getGraphByCypher(`MATCH (m), (n) WHERE id(m)=${edge.from} AND id(n)=${edge.to} CREATE (m)-[e:${edge.type} { ${props} }]->(n) RETURN m, n, e`);
+    return {
+      ...edge,
+      ...edges[0],
     };
   }
   async getAllNodeLabels(refresh) {
@@ -101,6 +109,7 @@ const Session = class {
     return allSchemas;
   }
   async getGraphByCypher(cypher) {
+    console.log('Running Cypher:', cypher);
     function flatten(input) {
       if (!input.forEach) {
         return [input];

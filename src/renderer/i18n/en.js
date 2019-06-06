@@ -15,6 +15,7 @@ module.exports = {
     support_query_only: 'Only Support Query',
     success_excute: 'Success',
     input_node_labels: 'Node labels is required',
+    input_relation_type: 'Relation type is required',
   },
   ui: {
     resource_manager: 'Resources',
@@ -68,6 +69,7 @@ module.exports = {
     click_to_remove_selected: 'Click to delete selected edges and points',
     click_to_edit_selected: 'Click to edit selected edges and points',
     node_editor: 'Node Editor',
+    edge_editor: 'Edge Editor',
     save: 'Save',
     node_label: 'Name',
     action: 'Action',

@@ -33,7 +33,7 @@
   <div class="graph-wrapper">
     <div class="vis-container" ref="container"></div>
     <div class="tool-box" :class="{show: true}" v-if="toolbox"><tool-box :value="toolBoxAction" @change="toolBoxAction=$event" @action="handleToolBoxAction"/></div>
-    <div class="add-ons-pop-tip" :class="{show: hoverNodeItem && !dragging}">
+    <div class="add-ons-pop-tip" :class="{show: hoverNodeItem}">
       <div class="wrapper" v-if="hoverNodeItem">
         <div class="name">
           {{hoverNodeItem.label}}
@@ -236,8 +236,9 @@ export default {
           addEdge(data, callback) {
             that.$emit('addEdge', {
               data,
-              callback(...args) {
-                callback(...args);
+              callback(edge) {
+                edge.label = edge.type;
+                callback(edge);
                 if (that.toolBoxAction !== 'new_edge_locked') {
                   that.toolBoxAction = '';
                   that.networkInst.disableEditMode();

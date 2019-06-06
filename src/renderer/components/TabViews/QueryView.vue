@@ -22,7 +22,7 @@
   </div>
   <div class="view-wrapper" v-loading="loading">
     <div class="graph" :class="{show: currentView=='graph'}">
-      <vis ref="vis" :toolbox="true" @addNode="handleAddNode" />
+      <vis ref="vis" :toolbox="true" @addNode="handleAddNode" @addEdge="handleAddEdge" />
     </div>
     <div class="table-view" :class="{show: currentView=='nodes'}">
       <div class="empty" v-if="!nodesData.length">
@@ -44,6 +44,7 @@
     </div>
   </div>
   <node-editor ref="nodeEditor" />
+  <edge-editor ref="edgeEditor" />
 </div>
 </template>
 
@@ -54,6 +55,7 @@ import { pool } from '../../services/neo4j';
 import Vis from '../Vis';
 import CypherEditor from '../CypherEditor/index';
 import NodeEditor from '../Dialogs/NodeEditor';
+import EdgeEditor from '../Dialogs/EdgeEditor';
 export default {
   name: 'query-view',
   props: {
@@ -65,6 +67,7 @@ export default {
     Vis,
     CypherEditor,
     NodeEditor,
+    EdgeEditor,
   },
   data() {
     return {
@@ -89,6 +92,7 @@ export default {
       this.fold();
     }
     this.nodeEditor = this.$refs.nodeEditor;
+    this.edgeEditor = this.$refs.edgeEditor;
   },
   computed: {
     ...mapState('Connections', {
@@ -144,6 +148,9 @@ export default {
   methods: {
     handleAddNode({ data, callback }) {
       this.nodeEditor.editNode(data, callback);
+    },
+    handleAddEdge({ data, callback }) {
+      this.edgeEditor.editEdge(data, callback);
     },
     setCypherText(val) {
       this.cypherText = val;
