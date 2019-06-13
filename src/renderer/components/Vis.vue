@@ -32,7 +32,7 @@
   </div>
   <div class="graph-wrapper">
     <div class="vis-container" ref="container"></div>
-    <div class="tool-box" :class="{show: true}" v-if="toolbox"><tool-box :value="toolBoxAction" @change="toolBoxAction=$event" @action="handleToolBoxAction" :selected="selected" /></div>
+    <div class="tool-box" :class="{show: true}" v-if="toolbox"><tool-box ref="toolbox" :value="toolBoxAction" @change="toolBoxAction=$event" @action="handleToolBoxAction" :selected="selected" /></div>
     <div class="add-ons-pop-tip" :class="{show: hoverNodeItem}">
       <div class="wrapper" v-if="hoverNodeItem">
         <div class="name">
@@ -385,6 +385,10 @@ export default {
           });
         });
         this.dragging = true;
+        if (this.$refs.toolbox) {
+          this.networkInst.disableEditMode();
+          this.$refs.toolbox.cancelAdd();
+        }
       });
       this.networkInst.on('dragEnd', (event) => {
         const {

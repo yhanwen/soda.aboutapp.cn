@@ -142,7 +142,7 @@ export default {
     editNode(node, callback) {
       this.dialogVisible = true;
       this.callback = callback;
-      this.labels = node.labels.slice(0);
+      this.labels = node.labels ? node.labels.slice(0) : [];
       this.$set(this, 'form', Object.assign({
         labels: [],
         label: '',

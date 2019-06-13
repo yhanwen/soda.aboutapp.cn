@@ -80,6 +80,9 @@ export default {
     },
   },
   methods: {
+    cancelAdd() {
+      this.$emit('change', '');
+    },
     handleClick(item) {
       const { action, disabled } = item;
       if (disabled) {
